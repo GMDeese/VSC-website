@@ -86,72 +86,37 @@
     .process-card h3 { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 8px; }
     .process-card p { font-size: 13px; color: var(--text-2); line-height: 1.6; }
 
-    /* Naera device stack — phone in front, browser behind */
+    /* Naera device stack — iPhone in front, MacBook behind */
     .naera-device-stack {
       position: relative;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      min-height: 560px;
+      min-height: 480px;
     }
-    .naera-browser {
+    .naera-macbook-img {
       position: absolute;
       right: 0;
       top: 0;
-      width: 76%;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
-    }
-    .naera-browser-bar {
-      background: var(--surface-3);
-      border-bottom: 1px solid var(--border);
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .naera-browser-dots {
-      display: flex;
-      gap: 5px;
-      flex-shrink: 0;
-    }
-    .naera-browser-dots span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
+      width: 78%;
+      height: auto;
       display: block;
     }
-    .naera-browser-url {
-      flex: 1;
-      background: var(--surface);
-      border-radius: 6px;
-      padding: 5px 12px;
-      font-size: 11px;
-      color: var(--text-3);
-      font-family: var(--font-body);
-      text-decoration: none;
-    }
-    .naera-browser-screen { line-height: 0; }
     .naera-phone-img {
       position: absolute;
       left: 0;
       bottom: 0;
       z-index: 2;
-      width: 240px;
+      width: 220px;
       height: auto;
       display: block;
-      filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
+      filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5));
     }
 
     @media (max-width: 900px) {
       .app-showcase { grid-template-columns: 1fr; gap: 48px; }
       .app-showcase.reverse { direction: ltr; }
       .phone-mockup { order: -1; }
-      .naera-device-stack { min-height: 380px; }
-      .naera-phone-img { width: 170px; }
+      .naera-device-stack { min-height: 320px; }
+      .naera-macbook-img { width: 80%; }
+      .naera-phone-img { width: 150px; }
       .phone-mockup img { width: 220px; }
       .process-cards { grid-template-columns: 1fr 1fr; }
     }
@@ -262,23 +227,11 @@
             </div>
           </div>
           <div class="naera-device-stack reveal reveal-delay-2">
-            <!-- Browser window (behind, top-right) -->
-            <div class="naera-browser">
-              <div class="naera-browser-bar">
-                <div class="naera-browser-dots">
-                  <span style="background:#FF5F57"></span>
-                  <span style="background:#FEBC2E"></span>
-                  <span style="background:#28C840"></span>
-                </div>
-                <a href="https://naera.app" target="_blank" rel="noopener" class="naera-browser-url">naera.app</a>
-              </div>
-              <div class="naera-browser-screen">
-                <a href="https://naera.app" target="_blank" rel="noopener" style="display:block;line-height:0;">
-                  <img src="/assets/naera-desktop.png" alt="Naera on desktop" style="width:100%;display:block;object-fit:cover;object-position:top;height:320px;" />
-                </a>
-              </div>
-            </div>
-            <!-- Real iPhone mockup (in front, bottom-left) -->
+            <!-- MacBook display (behind, top-right) -->
+            <a href="https://naera.app" target="_blank" rel="noopener">
+              <img src="/assets/naera-macbook.png" alt="Naera on MacBook" class="naera-macbook-img" />
+            </a>
+            <!-- iPhone (in front, bottom-left) -->
             <img src="/assets/naera-iphone.png" alt="Naera on iPhone 15 Pro" class="naera-phone-img" />
           </div>
         </div>
