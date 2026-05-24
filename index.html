@@ -380,47 +380,49 @@
       border-radius: var(--r-full);
     }
 
-    /* ---- CTA BAND ---- */
-    .cta-band {
-      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(139,92,246,0.08));
-      border: 1px solid rgba(99,102,241,0.2);
-      border-radius: var(--r-xl);
-      padding: 80px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    /* ---- CONTACT SPLIT ---- */
+    .contact-split-home {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
     }
-    .cta-band::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 300px;
-      background: radial-gradient(ellipse, rgba(99,102,241,0.15), transparent);
-      pointer-events: none;
-    }
-    .cta-band h2 {
+    .contact-lede h2 {
       font-family: var(--font-display);
-      font-size: clamp(32px, 4vw, 52px);
+      font-size: clamp(30px, 3.5vw, 46px);
       font-weight: 800;
       letter-spacing: -0.03em;
       margin-bottom: 16px;
     }
-    .cta-band p {
-      font-size: 18px;
+    .contact-lede p {
+      font-size: 17px;
       color: var(--text-2);
-      margin-bottom: 40px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
+      line-height: 1.7;
+      margin-bottom: 32px;
     }
-    .cta-band-btns {
+    .contact-trust {
       display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-trust-item {
+      display: flex;
+      align-items: flex-start;
       gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+    .contact-trust-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--a1);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 900px) {
+      .contact-split-home { grid-template-columns: 1fr; gap: 48px; }
     }
 
     /* Responsive bento */
@@ -492,18 +494,18 @@
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item">
-              <div class="stat-num grad-text-blue">NYU</div>
-              <div class="stat-label">Stern MBA — Strategy & TPM</div>
+              <div class="stat-num grad-text-blue">Gold</div>
+              <div class="stat-label">Atlassian Partner Network</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item">
-              <div class="stat-num grad-text-blue">4</div>
-              <div class="stat-label">Live Products Shipped</div>
+              <div class="stat-num grad-text-blue">Zero</div>
+              <div class="stat-label">Handoffs. One Team, End-to-End</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item">
               <div class="stat-num grad-text-blue">E-2-E</div>
-              <div class="stat-label">Proprietary Methodology</div>
+              <div class="stat-label">Proprietary Delivery Methodology</div>
             </div>
           </div>
         </div>
@@ -527,7 +529,7 @@
             <div>
               <p class="bento-card-eyebrow">Jira Consultation</p>
               <h3>Your Jira implementation, finally done right.</h3>
-              <p>From greenfield deployments to enterprise migrations — we configure, optimize, and train teams on Jira Software and Jira Service Management. In partnership with Dione Technology (Atlassian Gold Partner), we cover the full stack from strategy to go-live.</p>
+              <p>From greenfield deployments to enterprise migrations — we configure, optimize, and train teams on Jira Software and Jira Service Management. We cover the full stack from strategy to go-live, backed by the deepest Atlassian expertise in the ecosystem.</p>
               <div class="bento-jira-tags">
                 <span class="bento-tag">Jira Software</span>
                 <span class="bento-tag">Jira Service Mgmt</span>
@@ -574,7 +576,7 @@
               "Military service taught me that process isn't bureaucracy — it's the thing that makes exceptional outcomes repeatable."
             </div>
             <p>VSC was founded by a U.S. Air Force veteran and NYU Stern MBA around a simple premise: elite consulting shouldn't require assembling five different vendors.</p>
-            <p>He's shipped iOS apps to the App Store, built GTM automation engines, designed Jira workflows for complex organizations, and developed a proprietary End-to-End methodology that treats every engagement as a product — with a discovery phase, a build phase, and a measured outcome.</p>
+            <p>He's shipped an iOS app to the App Store, built GTM automation systems, designed Jira workflows for complex organizations, and developed a proprietary End-to-End methodology that treats every engagement as a product — with a discovery phase, a build phase, and a measured outcome.</p>
             <p>VSC isn't a staffing agency. It's a founder-led consultancy where every engagement is run by someone who's built the thing they're advising on.</p>
             <div class="founder-credentials">
               <div class="founder-cred">
@@ -587,7 +589,7 @@
               </div>
               <div class="founder-cred">
                 <div class="cred-icon">📱</div>
-                <span>4 live digital products shipped — Stillwater, Naera, GTM Engine, Capacity Dashboard</span>
+                <span>Products shipped to production — Stillwater (App Store) and multiple GTM and operational tools</span>
               </div>
               <div class="founder-cred">
                 <div class="cred-icon">✅</div>
@@ -605,18 +607,18 @@
               </div>
               <div class="founder-stat-card">
                 <div>
-                  <div class="num grad-text">4</div>
+                  <div class="num grad-text">Gold</div>
                 </div>
-                <div class="label">Live digital products designed, built, and shipped to production</div>
+                <div class="label">Atlassian Partner Network — deepest technical bench available</div>
               </div>
               <div class="founder-stat-card card-gradient-border">
                 <div style="width:100%">
                   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-                    <span style="font-size:13px;font-weight:600;color:var(--text-2)">NYU Stern MBA</span>
-                    <span class="badge badge-green">Completed</span>
+                    <span style="font-size:13px;font-weight:600;color:var(--text-2)">Zero Handoffs</span>
+                    <span class="badge badge-indigo">E-2-E</span>
                   </div>
                   <div style="font-size:13px;color:var(--text-3);line-height:1.6;">
-                    Strategy · Tech Product Management · Behavioral Economics · Entrepreneurship · Data Analytics
+                    One team owns strategy, implementation, training, and delivery — from kick-off to go-live. No translation layer. No gaps.
                   </div>
                 </div>
               </div>
@@ -673,49 +675,101 @@
       <div class="container">
         <div class="partnership-section reveal">
           <div>
-            <p class="eyebrow" style="margin-bottom:16px;">Strategic Partnership</p>
+            <p class="eyebrow" style="margin-bottom:16px;">Implementation Partners</p>
             <h2 class="headline" style="margin-bottom:16px;">Jira expertise at the highest tier.</h2>
             <p class="body" style="color:var(--text-2);margin-bottom:32px;">
-              VSC partners with Dione Technology — an Atlassian <strong>Gold Solution Partner</strong> with a track record across global enterprise clients — to deliver Jira consultation that combines strategic product thinking with the deepest possible Atlassian technical expertise.
+              VSC's implementation partners maintain <strong>Atlassian Gold Partner</strong> status and a deep technical bench — certified consultants with hands-on experience across global enterprise deployments. We layer in E-2-E product strategy and TPM discipline so your implementation has both the technical depth and the business alignment it needs to stick.
             </p>
             <a href="/jira" class="btn btn-primary">See Jira Services</a>
           </div>
           <div class="partnership-logo-group">
             <div class="partnership-main-badge">
               <div class="partner-dot"></div>
-              <span class="name">Dione Technology</span>
-              <span class="tier"><span class="badge badge-indigo">Gold Partner</span></span>
+              <span class="name">Atlassian Gold Partner Network</span>
+              <span class="tier"><span class="badge badge-indigo">Gold Tier</span></span>
             </div>
             <div class="client-proof">
-              <div class="client-proof-label">Partner client experience includes</div>
+              <div class="client-proof-label">Partner enterprise experience includes</div>
               <div class="client-logos-row">
-                <span class="client-pill">BNP Paribas</span>
-                <span class="client-pill">Barclays</span>
-                <span class="client-pill">Société Générale</span>
-                <span class="client-pill">Collinson</span>
+                <span class="client-pill">Global Financial Firms</span>
+                <span class="client-pill">Enterprise SaaS</span>
+                <span class="client-pill">Government Agencies</span>
+                <span class="client-pill">250+ Orgs</span>
               </div>
             </div>
             <div style="display:flex;gap:12px;flex-wrap:wrap;">
               <span class="badge badge-indigo">Atlassian Gold Partner</span>
               <span class="badge badge-gold">SDVOSB · VSC</span>
-              <span class="badge badge-outline"></span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA BAND -->
-    <section class="section">
-      <div class="container" id="contact">
-        <div class="cta-band reveal">
-          <p class="eyebrow" style="margin-bottom:16px;">Ready to Start?</p>
-          <h2>Let's solve it together.</h2>
-          <p>Whether you're untangling a Jira implementation, building a product from scratch, or need an end-to-end partner — we want to hear about it.</p>
-          <div class="cta-band-btns">
-            <a href="mailto:info@veteranserviceconnect.com" class="btn btn-gradient btn-lg">Email Us</a>
-            <a href="/jira#contact" class="btn btn-ghost btn-lg">Jira Assessment</a>
-            <a href="/businessconsulting#contact" class="btn btn-ghost btn-lg">Strategy Session</a>
+    <!-- CONTACT -->
+    <section class="section section-dark" id="contact">
+      <div class="container">
+        <div class="contact-split-home">
+          <div class="contact-lede reveal">
+            <p class="eyebrow" style="margin-bottom:16px;">Start a Conversation</p>
+            <h2>Let's solve it together.</h2>
+            <p>Whether you're untangling a Jira implementation, building a product from scratch, or need a true end-to-end partner — tell us what you're working on.</p>
+            <div class="contact-trust">
+              <div class="contact-trust-item">
+                <div class="contact-trust-dot"></div>
+                <span>We respond within one business day — no automated drip sequences, no SDR handoffs</span>
+              </div>
+              <div class="contact-trust-item">
+                <div class="contact-trust-dot"></div>
+                <span>Every initial assessment is free — we'll tell you what we see before you commit to anything</span>
+              </div>
+              <div class="contact-trust-item">
+                <div class="contact-trust-dot"></div>
+                <span>SDVOSB certified — eligible for sole-source contracts with government-adjacent partners</span>
+              </div>
+            </div>
+            <div style="margin-top:32px;">
+              <a href="mailto:info@veteranserviceconnect.com" class="btn btn-ghost" style="display:inline-flex;align-items:center;gap:8px;">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                info@veteranserviceconnect.com
+              </a>
+            </div>
+          </div>
+          <div class="card card-glass reveal reveal-delay-2" style="padding:40px;">
+            <form class="form" id="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your name" required />
+                </div>
+                <div class="form-group">
+                  <label for="org">Organization</label>
+                  <input type="text" id="org" name="org" placeholder="Company name" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@company.com" required />
+              </div>
+              <div class="form-group">
+                <label for="service">What do you need help with?</label>
+                <select id="service" name="service">
+                  <option value="">Select a service</option>
+                  <option>Jira Implementation or Optimization</option>
+                  <option>Capacity Dashboard</option>
+                  <option>End-to-End Business Consulting</option>
+                  <option>Mobile App Design & Development</option>
+                  <option>GTM / Productivity Systems</option>
+                  <option>Not sure — let's talk</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Tell us about your situation</label>
+                <textarea id="message" name="message" rows="4" placeholder="Timeline, current challenges, team size..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-gradient btn-full">Send Message</button>
+              <p class="form-note">We respond within one business day.</p>
+            </form>
           </div>
         </div>
       </div>
@@ -750,7 +804,7 @@
             <h4>Company</h4>
             <a href="#about">About VSC</a>
             <a href="#process">E-2-E Framework</a>
-            <a href="/jira">Dione Partnership</a>
+            <a href="/jira">Atlassian Consulting</a>
           </div>
           <div class="footer-col">
             <h4>Contact</h4>
