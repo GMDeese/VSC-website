@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-page="businessconsulting">
+<html lang="en" data-page="delivery">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="VSC Business Consulting — End-to-End Technical Product Management. The E-2-E framework: discover, define, design, build, and ship with measured outcomes." />
-  <title>Business Consulting — Veteran Service Connect</title>
+  <meta name="description" content="VSC Product Research & Delivery — End-to-End Technical Product Management from customer discovery through go-to-market. Includes the GTM Engine for launch automation." />
+  <title>Product Research & Delivery — Veteran Service Connect</title>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,23 +14,17 @@
     .page-hero { background: linear-gradient(180deg, rgba(139,92,246,0.06) 0%, transparent 100%); }
 
     /* E-2-E deep dive */
-    .e2e-deep {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+    .e2e-deep { display: flex; flex-direction: column; gap: 2px; }
     .e2e-panel {
       display: grid;
       grid-template-columns: 80px 1fr 1fr;
       gap: 40px;
-      padding: 40px 0;
+      padding: 40px 24px;
       border-bottom: 1px solid var(--border);
       align-items: start;
       cursor: default;
       transition: background 0.2s;
       border-radius: var(--r-md);
-      padding-left: 24px;
-      padding-right: 24px;
     }
     .e2e-panel:hover { background: rgba(139,92,246,0.04); }
     .e2e-panel:last-child { border-bottom: none; }
@@ -52,9 +46,7 @@
     }
     .e2e-panel-left .badge { margin-bottom: 16px; }
     .e2e-panel-left p { font-size: 15px; color: var(--text-2); line-height: 1.7; }
-    .e2e-panel-right {
-      padding-top: 4px;
-    }
+    .e2e-panel-right { padding-top: 4px; }
     .e2e-panel-right h4 {
       font-size: 12px;
       font-weight: 600;
@@ -80,55 +72,15 @@
       flex-shrink: 0;
     }
 
-    /* MBA credentials section */
-    .mba-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .mba-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      padding: 32px;
-      transition: border-color 0.2s;
-    }
-    .mba-card:hover { border-color: rgba(139,92,246,0.3); }
-    .mba-card .label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #8B5CF6;
-      margin-bottom: 12px;
-    }
-    .mba-card h3 {
-      font-family: var(--font-display);
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
-    }
-    .mba-card p { font-size: 14px; color: var(--text-2); line-height: 1.65; }
+    /* Stage 5 GTM Engine highlight */
+    .e2e-panel.stage-5 { background: rgba(139,92,246,0.03); border: 1px solid rgba(139,92,246,0.12); border-radius: var(--r-lg); }
+    .e2e-panel.stage-5:hover { background: rgba(139,92,246,0.07); }
 
-    /* What we're not */
-    .contrast-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .contrast-col {
-      border-radius: var(--r-lg);
-      padding: 40px;
-    }
-    .contrast-no {
-      background: rgba(239,68,68,0.04);
-      border: 1px solid rgba(239,68,68,0.12);
-    }
-    .contrast-yes {
-      background: rgba(139,92,246,0.06);
-      border: 1px solid rgba(139,92,246,0.2);
-    }
+    /* Contrast section */
+    .contrast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .contrast-col { border-radius: var(--r-lg); padding: 40px; }
+    .contrast-no { background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.12); }
+    .contrast-yes { background: rgba(139,92,246,0.06); border: 1px solid rgba(139,92,246,0.2); }
     .contrast-col h3 {
       font-family: var(--font-display);
       font-size: 18px;
@@ -141,6 +93,52 @@
     .contrast-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .contrast-col ul li { font-size: 15px; color: var(--text-2); display: flex; gap: 10px; align-items: flex-start; }
 
+    /* GTM Engine section */
+    .gtm-engine-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .gtm-engine-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 32px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .gtm-engine-card:hover { border-color: rgba(139,92,246,0.3); transform: translateY(-2px); }
+    .gtm-engine-card .icon-box { margin-bottom: 16px; }
+    .gtm-engine-card h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+    .gtm-engine-card p { font-size: 14px; color: var(--text-2); line-height: 1.7; }
+    .gtm-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #8B5CF6;
+      background: rgba(139,92,246,0.08);
+      border: 1px solid rgba(139,92,246,0.2);
+      border-radius: 100px;
+      padding: 4px 12px;
+      margin-top: 20px;
+    }
+    .gtm-status-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #8B5CF6;
+    }
+
     .contact-cta-band {
       background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(99,102,241,0.06));
       border: 1px solid rgba(139,92,246,0.2);
@@ -152,8 +150,8 @@
     @media (max-width: 900px) {
       .e2e-panel { grid-template-columns: 60px 1fr; gap: 24px; }
       .e2e-panel-right { grid-column: 2; }
-      .mba-grid { grid-template-columns: 1fr; }
       .contrast-grid { grid-template-columns: 1fr; }
+      .gtm-engine-grid { grid-template-columns: 1fr; }
       .contact-cta-band { padding: 48px 32px; }
     }
   </style>
@@ -164,7 +162,6 @@
     <div class="container nav-inner">
       <a href="/" class="nav-logo">
         <img src="/assets/vsc-mark.png" alt="VSC" style="height:40px;width:auto;" /><span class="nav-logo-text">Veteran Service Connect</span>
-        
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
@@ -173,7 +170,6 @@
         <a href="/jira">Jira</a>
         <a href="/delivery" class="active">Product Research &amp; Delivery</a>
         <a href="/apps">App Design</a>
-        
         <a href="#contact" class="btn btn-primary btn-sm">Book a Session</a>
       </nav>
     </div>
@@ -185,13 +181,13 @@
       <div class="orb orb-2" style="opacity:0.5;left:auto;right:5%"></div>
       <div class="hero-dots" style="opacity:0.4"></div>
       <div class="container">
-        <p class="eyebrow reveal" style="color:#8B5CF6">Business Consulting &nbsp;·&nbsp; Technical Product Management</p>
+        <p class="eyebrow reveal" style="color:#8B5CF6">Product Research &amp; Delivery &nbsp;·&nbsp; E-2-E Technical Product Management</p>
         <h1 class="display-l reveal reveal-delay-1" style="max-width:820px;margin-top:16px;margin-bottom:24px;">
-          The E-2-E Framework.<br />
-          <span style="background:linear-gradient(135deg,#8B5CF6,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Strategy through shipment.</span>
+          From first insight<br />
+          <span style="background:linear-gradient(135deg,#8B5CF6,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">to launch and beyond.</span>
         </h1>
         <p class="body-l reveal reveal-delay-2" style="color:var(--text-2);max-width:580px;margin-bottom:40px;">
-          Most consultants hand you a strategy deck and leave. VSC runs the entire product lifecycle — from customer discovery through go-to-market — as a single, accountable engagement.
+          Most consultants hand you a strategy deck and leave. VSC runs the entire product lifecycle — customer discovery, validation, build, and go-to-market — as a single, accountable engagement. And when we hit launch, we activate the GTM Engine.
         </p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-3">
           <a href="#contact" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#8B5CF6,#6366F1)">Book a Strategy Session</a>
@@ -199,18 +195,18 @@
         </div>
         <div style="margin-top:48px;display:flex;gap:24px;flex-wrap:wrap;" class="reveal reveal-delay-4">
           <div class="stat-item">
-            <div class="stat-num" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">26+</div>
-            <div class="stat-label">Years Combined Experience</div>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
             <div class="stat-num" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">E-2-E</div>
             <div class="stat-label">Proprietary 5-Stage Methodology</div>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <div class="stat-num" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">NYU</div>
-            <div class="stat-label">Stern MBA — Strategy &amp; TPM</div>
+            <div class="stat-num" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">GTM</div>
+            <div class="stat-label">Engine Activated at Launch</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-num" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Zero</div>
+            <div class="stat-label">Handoffs — One Partner, Full Cycle</div>
           </div>
         </div>
       </div>
@@ -223,7 +219,7 @@
       <div class="container">
         <div class="section-header centered reveal">
           <p class="eyebrow" style="color:#8B5CF6">Our Difference</p>
-          <h2 class="headline">We're not a strategy firm. We're not a dev shop. We're both.</h2>
+          <h2 class="headline">Not a strategy firm. Not a dev shop. Both.</h2>
         </div>
         <div class="contrast-grid reveal reveal-delay-1">
           <div class="contrast-col contrast-no">
@@ -240,25 +236,26 @@
             <h3><span style="color:#8B5CF6">✓</span> VSC E-2-E</h3>
             <ul>
               <li><span style="color:#8B5CF6;flex-shrink:0">+</span> Discovery through go-to-market — one partner</li>
-              <li><span style="color:#8B5CF6;flex-shrink:0">+</span> Strategy validated with real user research</li>
+              <li><span style="color:#8B5CF6;flex-shrink:0">+</span> Strategy validated with real user research before build</li>
               <li><span style="color:#8B5CF6;flex-shrink:0">+</span> Prototype testing before a line of production code</li>
               <li><span style="color:#8B5CF6;flex-shrink:0">+</span> Measurable outcomes agreed before engagement starts</li>
-              <li><span style="color:#8B5CF6;flex-shrink:0">+</span> Run by a founder who's shipped four products himself</li>
+              <li><span style="color:#8B5CF6;flex-shrink:0">+</span> GTM Engine activated at launch — not just a plan</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- E-2-E DEEP DIVE -->
+    <!-- E-2-E FRAMEWORK -->
     <section class="section" id="framework">
       <div class="container">
         <div class="section-header reveal">
           <p class="eyebrow" style="color:#8B5CF6">The Framework</p>
           <h2 class="headline">Five stages. Zero gaps.</h2>
-          <p class="body-l" style="color:var(--text-2);max-width:560px;">Each stage has defined inputs, outputs, and acceptance criteria. Engagements don't move to the next stage without evidence.</p>
+          <p class="body-l" style="color:var(--text-2);max-width:560px;">Each stage has defined inputs, outputs, and acceptance criteria. Engagements don't move forward without evidence.</p>
         </div>
         <div class="e2e-deep reveal reveal-delay-1">
+
           <div class="e2e-panel">
             <div class="e2e-panel-num">01</div>
             <div class="e2e-panel-left">
@@ -276,6 +273,7 @@
               </ul>
             </div>
           </div>
+
           <div class="e2e-panel">
             <div class="e2e-panel-num">02</div>
             <div class="e2e-panel-left">
@@ -293,12 +291,13 @@
               </ul>
             </div>
           </div>
+
           <div class="e2e-panel">
             <div class="e2e-panel-num">03</div>
             <div class="e2e-panel-left">
               <span class="badge badge-outline" style="border-color:rgba(139,92,246,0.3);color:#A78BFA;background:rgba(139,92,246,0.08);">Design &amp; Validate</span>
               <h3>Prototype &amp; Test</h3>
-              <p>We design solutions against the riskiest assumptions first — then run structured usability tests before a single line of production code is committed. This stage eliminates the most expensive mistake in product development: building the wrong thing.</p>
+              <p>We design against the riskiest assumptions first — then run structured usability tests before any production code is committed. This stage eliminates the most expensive mistake in product development: building the wrong thing.</p>
             </div>
             <div class="e2e-panel-right">
               <h4>Stage Deliverables</h4>
@@ -311,6 +310,7 @@
               </ul>
             </div>
           </div>
+
           <div class="e2e-panel">
             <div class="e2e-panel-num">04</div>
             <div class="e2e-panel-left">
@@ -328,12 +328,13 @@
               </ul>
             </div>
           </div>
-          <div class="e2e-panel">
-            <div class="e2e-panel-num">05</div>
+
+          <div class="e2e-panel stage-5">
+            <div class="e2e-panel-num" style="color:rgba(139,92,246,0.4);">05</div>
             <div class="e2e-panel-left">
               <span class="badge badge-outline" style="border-color:rgba(139,92,246,0.3);color:#A78BFA;background:rgba(139,92,246,0.08);">Go-to-Market</span>
               <h3>Ship &amp; Scale</h3>
-              <p>Launch strategy, positioning, and GTM execution — including crossing-the-chasm planning and product-market fit testing. We use the Sean Ellis "40% very disappointed" benchmark as the minimum bar for scale investment.</p>
+              <p>Launch strategy, positioning, and GTM execution. We don't hand you a playbook and leave — we activate the GTM Engine. The launch becomes a managed, instrumented campaign from day one, not a hope-and-post-on-LinkedIn.</p>
             </div>
             <div class="e2e-panel-right">
               <h4>Stage Deliverables</h4>
@@ -342,53 +343,59 @@
                 <li>Launch sequencing playbook</li>
                 <li>PMF testing framework (Ellis benchmark)</li>
                 <li>Scale decision criteria</li>
-                <li>Post-launch measurement dashboard</li>
+                <li>GTM Engine activation — see below</li>
               </ul>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- MBA FRAMEWORKS -->
-    <section class="section section-dark">
+    <!-- GTM ENGINE -->
+    <section class="section section-dark" id="gtm-engine">
       <div class="container">
-        <div class="section-header centered reveal">
-          <p class="eyebrow" style="color:#8B5CF6">The Academic Foundation</p>
-          <h2 class="headline">MBA frameworks, applied to real products.</h2>
-          <p class="body-l" style="color:var(--text-2);">NYU Stern's Langone MBA program isn't theoretical. The frameworks VSC applies come from coursework built for working operators — tested against real-world cases.</p>
+        <div class="section-header reveal">
+          <p class="eyebrow" style="color:#8B5CF6">Stage 5 Capability</p>
+          <h2 class="headline">The GTM Engine.</h2>
+          <p class="body-l" style="color:var(--text-2);max-width:600px;">
+            Built internally at VSC and battle-tested on Stillwater's own launch. When we hit the Ship &amp; Scale phase, we don't hand you a deck — we activate a full automated go-to-market pipeline. Four components, running in parallel, from day one.
+          </p>
         </div>
-        <div class="mba-grid reveal reveal-delay-1">
-          <div class="mba-card">
-            <div class="label">Strategy</div>
-            <h3>Porter's Five Forces &amp; RBV</h3>
-            <p>Every engagement starts with an industry analysis. We don't design products in a vacuum — we position them against real competitive forces and identify durable advantages.</p>
+        <div class="gtm-engine-grid reveal reveal-delay-1">
+          <div class="gtm-engine-card">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Ad Generator</h3>
+            <p>AI-powered creative generation for paid channels. Produces copy, headlines, and structured ad variants at scale — tuned to the positioning defined in Stage 2. No agency markup, no creative bottleneck.</p>
           </div>
-          <div class="mba-card">
-            <div class="label">Behavioral Economics</div>
-            <h3>Prospect Theory &amp; Choice Architecture</h3>
-            <p>Product decisions grounded in how users actually behave — not how we assume they behave. Loss aversion, anchoring, and mental accounting applied at the design level.</p>
+          <div class="gtm-engine-card">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Landing Pages</h3>
+            <p>Conversion-optimized landing pages generated from the validated value proposition. Structured for A/B testing across segments identified in Stage 1. Built to measure, not just to ship.</p>
           </div>
-          <div class="mba-card">
-            <div class="label">Tech Product Management</div>
-            <h3>E-2-E Discovery &amp; Validation</h3>
-            <p>The full TPM lifecycle — from "Talking to Humans" customer discovery through Sean Ellis PMF testing. Applied across Stillwater, Naera, and every VSC client engagement.</p>
+          <div class="gtm-engine-card">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Outbound Pipeline</h3>
+            <p>Automated outreach sequencing to the target segments mapped in discovery. Personalized at the segment level, timed across channels, and tracked against reply and conversion benchmarks.</p>
           </div>
-          <div class="mba-card">
-            <div class="label">Data &amp; Analytics</div>
-            <h3>Evidence-Based Prioritization</h3>
-            <p>A/B testing design, causal inference, regression models, and BI dashboards. Product decisions tied to data, not intuition — with the statistical rigor to tell the difference.</p>
+          <div class="gtm-engine-card">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Dashboard &amp; Attribution</h3>
+            <p>Real-time analytics across every GTM channel. Attribution by source, segment, and campaign. The data feeds back into the PMF testing protocol and informs the scale decision — close the loop from launch day one.</p>
           </div>
-          <div class="mba-card">
-            <div class="label">Entrepreneurship</div>
-            <h3>Launch Decision Process</h3>
-            <p>Is there an opportunity? Is it an opportunity for you? What's the investment case? The Okun framework prevents the two most expensive startup errors: fog of excitement and FOMO-driven premature launch.</p>
-          </div>
-          <div class="mba-card">
-            <div class="label">Negotiation</div>
-            <h3>BATNA &amp; Integrative Bargaining</h3>
-            <p>Contract negotiations, vendor selection, and partnership structuring handled with formal negotiation theory — not gut feel. Clients keep more of what they build.</p>
-          </div>
+        </div>
+        <div class="reveal reveal-delay-2" style="margin-top:40px;padding:32px;background:rgba(139,92,246,0.04);border:1px solid rgba(139,92,246,0.15);border-radius:var(--r-lg);max-width:680px;">
+          <p style="font-size:15px;color:var(--text-2);line-height:1.75;margin:0;">
+            <strong style="color:var(--text-1);">Status:</strong> The GTM Engine is currently deployed internally for Stillwater and being generalized for external E-2-E engagements. Inquire during your strategy session if this capability is relevant to your launch timeline.
+          </p>
         </div>
       </div>
     </section>
@@ -399,10 +406,10 @@
         <div class="contact-cta-band reveal">
           <p class="eyebrow" style="color:#8B5CF6;margin-bottom:16px;">Ready?</p>
           <h2 class="headline" style="margin-bottom:16px;">Book a Strategy Session</h2>
-          <p class="body-l" style="color:var(--text-2);max-width:480px;margin:0 auto 40px;">
+          <p class="body-l" style="color:var(--text-2);max-width:520px;margin:0 auto 40px;">
             60 minutes. We'll map your current state, identify the highest-leverage stage in the E-2-E framework for your situation, and define what a focused engagement looks like.
           </p>
-          <a href="mailto:info@veteranserviceconnect.com?subject=Strategy Session Request" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#8B5CF6,#6366F1)">Book a Strategy Session</a>
+          <a href="mailto:info@veteranserviceconnect.com?subject=Product Research %26 Delivery — Strategy Session Request" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#8B5CF6,#6366F1)">Book a Strategy Session</a>
         </div>
       </div>
     </section>
@@ -414,23 +421,21 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <a href="/" class="nav-logo"><img src="/assets/vsc-mark.png" alt="VSC" style="height:40px;width:auto;" /><span class="nav-logo-text">Veteran Service Connect</span></a>
-          <p>End-to-End Technical Product Management. Founder-led. SDVOSB certified.</p>
+          <p>Product Research &amp; Delivery. Founder-led. SDVOSB certified.</p>
           <span class="badge badge-gold">SDVOSB Certified</span>
         </div>
         <div class="footer-links-grid">
           <div class="footer-col">
             <h4>Framework</h4>
             <a href="#framework">E-2-E Overview</a>
-            <a href="#framework">Stage 1: Discover</a>
-            <a href="#framework">Stage 2: Define</a>
-            <a href="#framework">Stage 5: GTM</a>
+            <a href="#framework">Stages 1–4</a>
+            <a href="#gtm-engine">GTM Engine</a>
           </div>
           <div class="footer-col">
             <h4>VSC</h4>
             <a href="/">Home</a>
             <a href="/jira">Jira Consulting</a>
             <a href="/apps">App Design</a>
-            
           </div>
           <div class="footer-col">
             <h4>Contact</h4>

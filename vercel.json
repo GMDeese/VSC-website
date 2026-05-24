@@ -1,11 +1,15 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/businessconsulting", "destination": "/delivery", "permanent": true },
+    { "source": "/mobileappdesign", "destination": "/apps", "permanent": true },
+    { "source": "/productivity", "destination": "/delivery", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/jira", "destination": "/jira.html" },
-    { "source": "/businessconsulting", "destination": "/businessconsulting.html" },
-    { "source": "/mobileappdesign", "destination": "/mobileappdesign.html" },
-    { "source": "/productivity", "destination": "/productivity.html" }
+    { "source": "/delivery", "destination": "/delivery.html" },
+    { "source": "/apps", "destination": "/apps.html" }
   ],
   "headers": [
     {
