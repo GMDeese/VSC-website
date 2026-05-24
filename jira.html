@@ -412,21 +412,7 @@
           <div class="card card-glass reveal reveal-delay-2" style="padding:40px;">
             <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;margin-bottom:8px;">Join the Waitlist</h3>
             <p style="font-size:14px;color:var(--text-2);margin-bottom:28px;">Be first to know when Capacity Dashboard opens. No spam — one email when it's ready.</p>
-            <!--
-              FORMSPREE SETUP:
-              1. Go to formspree.io and create a free account
-              2. Create a new form — add info@veteranserviceconnect.com as the destination
-              3. Replace YOUR_FORM_ID below with the form ID from Formspree
-              4. The _subject field is auto-populated with date via JS below
-            -->
-            <form
-              id="capacity-waitlist-form"
-              action="https://formspree.io/f/YOUR_FORM_ID"
-              method="POST"
-              class="form"
-            >
-              <input type="hidden" name="_subject" id="waitlist-subject" value="New Capacity Dashboard Request" />
-              <input type="hidden" name="_replyto" value="" id="waitlist-replyto" />
+            <form id="capacity-waitlist-form" class="form" novalidate>
               <div class="form-row">
                 <div class="form-group">
                   <label for="wl-name">Name</label>
@@ -439,7 +425,7 @@
               </div>
               <div class="form-group">
                 <label for="wl-email">Work Email</label>
-                <input type="email" id="wl-email" name="Email" placeholder="you@company.com" required />
+                <input type="email" id="wl-email" name="Work Email" placeholder="you@company.com" required />
               </div>
               <div class="form-group">
                 <label for="wl-size">Team Size</label>
@@ -466,21 +452,44 @@
                   <option>Just exploring</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-gradient btn-full">Join the Waitlist</button>
-              <p style="font-size:12px;color:var(--text-3);text-align:center;margin-top:12px;">We'll email you at the address above when access opens.</p>
+              <button type="submit" class="btn btn-gradient btn-full" id="wl-submit">Join the Waitlist</button>
+              <p id="wl-msg" style="font-size:13px;text-align:center;margin-top:12px;min-height:20px;"></p>
             </form>
             <script>
               (function() {
-                var d = new Date();
-                var formatted = d.toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}) +
-                  ' at ' + d.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'});
-                document.getElementById('waitlist-subject').value = 'New Capacity Dashboard Request — ' + formatted;
-                var emailInput = document.getElementById('wl-email');
-                if (emailInput) {
-                  emailInput.addEventListener('input', function() {
-                    document.getElementById('waitlist-replyto').value = this.value;
+                var form = document.getElementById('capacity-waitlist-form');
+                var btn = document.getElementById('wl-submit');
+                var msg = document.getElementById('wl-msg');
+                form.addEventListener('submit', function(e) {
+                  e.preventDefault();
+                  var d = new Date();
+                  var subject = 'Capacity Dashboard Waitlist — ' +
+                    d.toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}) +
+                    ' at ' + d.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'});
+                  var data = { form_type: 'Capacity Dashboard Waitlist', _subject: subject };
+                  new FormData(form).forEach(function(v, k) { data[k] = v; });
+                  btn.disabled = true;
+                  btn.textContent = 'Sending…';
+                  fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                  }).then(function(r) {
+                    if (r.ok) {
+                      btn.textContent = 'You\'re on the list ✓';
+                      msg.style.color = '#10B981';
+                      msg.textContent = 'We\'ll be in touch when Capacity Dashboard opens.';
+                      form.reset();
+                    } else {
+                      throw new Error();
+                    }
+                  }).catch(function() {
+                    btn.disabled = false;
+                    btn.textContent = 'Join the Waitlist';
+                    msg.style.color = '#EF4444';
+                    msg.textContent = 'Something went wrong — email us at info@veteranserviceconnect.com';
                   });
-                }
+                });
               })();
             </script>
           </div>
@@ -513,24 +522,24 @@
             </div>
           </div>
           <div class="card card-glass reveal reveal-delay-2" style="padding:40px;">
-            <form class="form" id="contact-form">
+            <form class="form" id="contact-form" novalidate>
               <div class="form-row">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" id="name" name="name" placeholder="Your name" required />
+                  <input type="text" id="name" name="Name" placeholder="Your name" required />
                 </div>
                 <div class="form-group">
                   <label for="org">Organization</label>
-                  <input type="text" id="org" name="org" placeholder="Company name" />
+                  <input type="text" id="org" name="Organization" placeholder="Company name" />
                 </div>
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="you@company.com" required />
+                <input type="email" id="email" name="Email" placeholder="you@company.com" required />
               </div>
               <div class="form-group">
                 <label for="jira-state">Current Jira State</label>
-                <select id="jira-state" name="jira_state">
+                <select id="jira-state" name="Current Jira State">
                   <option value="">Select one</option>
                   <option>Starting from scratch</option>
                   <option>Existing setup that needs cleanup</option>
@@ -542,11 +551,46 @@
               </div>
               <div class="form-group">
                 <label for="message">Tell us about your situation</label>
-                <textarea id="message" name="message" rows="4" placeholder="How many teams, current pain points, timeline..."></textarea>
+                <textarea id="message" name="Message" rows="4" placeholder="How many teams, current pain points, timeline..."></textarea>
               </div>
-              <button type="submit" class="btn btn-gradient btn-full">Request Assessment</button>
-              <p class="form-note">We respond within one business day.</p>
+              <button type="submit" class="btn btn-gradient btn-full" id="contact-submit">Request Assessment</button>
+              <p id="contact-msg" style="font-size:13px;text-align:center;margin-top:12px;min-height:20px;"></p>
             </form>
+            <script>
+              (function() {
+                var form = document.getElementById('contact-form');
+                var btn = document.getElementById('contact-submit');
+                var msg = document.getElementById('contact-msg');
+                form.addEventListener('submit', function(e) {
+                  e.preventDefault();
+                  var d = new Date();
+                  var subject = 'Jira Assessment Request — ' +
+                    d.toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}) +
+                    ' at ' + d.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'});
+                  var data = { form_type: 'Jira Assessment Request', _subject: subject };
+                  new FormData(form).forEach(function(v, k) { data[k] = v; });
+                  btn.disabled = true;
+                  btn.textContent = 'Sending…';
+                  fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                  }).then(function(r) {
+                    if (r.ok) {
+                      btn.textContent = 'Request Sent ✓';
+                      msg.style.color = '#10B981';
+                      msg.textContent = 'We\'ll be in touch within one business day.';
+                      form.reset();
+                    } else { throw new Error(); }
+                  }).catch(function() {
+                    btn.disabled = false;
+                    btn.textContent = 'Request Assessment';
+                    msg.style.color = '#EF4444';
+                    msg.textContent = 'Something went wrong — email us at info@veteranserviceconnect.com';
+                  });
+                });
+              })();
+            </script>
           </div>
         </div>
       </div>
