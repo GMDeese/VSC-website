@@ -39,10 +39,10 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${process.env.RESEND_API_KEY_VSC}`,
       },
       body: JSON.stringify({
-        from: 'Veteran Service Connect <noreply@getstillwater.app>',
+        from: 'Veteran Service Connect <noreply@veteranserviceconnect.com>',
         to: 'info@veteranserviceconnect.com',
         reply_to: replyTo || undefined,
         subject,
