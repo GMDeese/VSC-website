@@ -409,7 +409,37 @@
           <p class="body-l" style="color:var(--text-2);max-width:520px;margin:0 auto 40px;">
             60 minutes. We'll map your current state, identify the highest-leverage stage in the E-2-E framework for your situation, and define what a focused engagement looks like.
           </p>
-          <a href="mailto:info@veteranserviceconnect.com?subject=Product Research %26 Delivery — Strategy Session Request" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#8B5CF6,#6366F1)">Book a Strategy Session</a>
+          <form class="form" id="contact-form" style="max-width:480px;margin:0 auto;text-align:left;">
+            <input type="hidden" name="_subject" value="Strategy Session Request — Product Research &amp; Delivery" />
+            <input type="hidden" name="form_type" value="Strategy Session" />
+            <div class="form-row">
+              <div class="form-group">
+                <label for="delivery-name">Name</label>
+                <input type="text" id="delivery-name" name="Name" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label for="delivery-email">Email</label>
+                <input type="email" id="delivery-email" name="Email" placeholder="you@company.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="delivery-stage">Where are you in the journey?</label>
+              <select id="delivery-stage" name="Stage">
+                <option value="">Select a stage</option>
+                <option>Pre-idea — need discovery and validation</option>
+                <option>Have an idea — need to validate before building</option>
+                <option>In design or prototype — need a build partner</option>
+                <option>In build — need GTM strategy and execution</option>
+                <option>Launched — need to scale</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="delivery-message">Tell us what you're working on</label>
+              <textarea id="delivery-message" name="Message" rows="3" placeholder="Product, market, current challenges..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-gradient btn-full btn-lg" style="background:linear-gradient(135deg,#8B5CF6,#6366F1)">Request a Session</button>
+            <p class="form-note" style="text-align:center;margin-top:12px;">We respond within one business day.</p>
+          </form>
         </div>
       </div>
     </section>
