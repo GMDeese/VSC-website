@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" data-page="businessconsulting">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VSC Business Consulting — End-to-End Technical Product Management. The E-2-E framework: discover, define, design, build, and ship with measured outcomes." />
+  <title>Business Consulting — Veteran Service Connect</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .page-hero { background: linear-gradient(180deg, rgba(139,92,246,0.06) 0%, transparent 100%); }
+
+    /* E-2-E deep dive */
+    .e2e-deep {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .e2e-panel {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr;
+      gap: 40px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      cursor: default;
+      transition: background 0.2s;
+      border-radius: var(--r-md);
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    .e2e-panel:hover { background: rgba(139,92,246,0.04); }
+    .e2e-panel:last-child { border-bottom: none; }
+    .e2e-panel-num {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: rgba(139,92,246,0.2);
+      padding-top: 4px;
+    }
+    .e2e-panel-left h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .e2e-panel-left .badge { margin-bottom: 16px; }
+    .e2e-panel-left p { font-size: 15px; color: var(--text-2); line-height: 1.7; }
+    .e2e-panel-right {
+      padding-top: 4px;
+    }
+    .e2e-panel-right h4 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 16px;
+    }
+    .e2e-deliverables { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .e2e-deliverables li {
+      font-size: 14px;
+      color: var(--text-2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .e2e-deliverables li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #8B5CF6;
+      flex-shrink: 0;
+    }
+
+    /* MBA credentials section */
+    .mba-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .mba-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 32px;
+      transition: border-color 0.2s;
+    }
+    .mba-card:hover { border-color: rgba(139,92,246,0.3); }
+    .mba-card .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8B5CF6;
+      margin-bottom: 12px;
+    }
+    .mba-card h3 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .mba-card p { font-size: 14px; color: var(--text-2); line-height: 1.65; }
+
+    /* What we're not */
+    .contrast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .contrast-col {
+      border-radius: var(--r-lg);
+      padding: 40px;
+    }
+    .contrast-no {
+      background: rgba(239,68,68,0.04);
+      border: 1px solid rgba(239,68,68,0.12);
+    }
+    .contrast-yes {
+      background: rgba(139,92,246,0.06);
+      border: 1px solid rgba(139,92,246,0.2);
+    }
+    .contrast-col h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .contrast-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .contrast-col ul li { font-size: 15px; color: var(--text-2); display: flex; gap: 10px; align-items: flex-start; }
+
+    .contact-cta-band {
+      background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(99,102,241,0.06));
+      border: 1px solid rgba(139,92,246,0.2);
+      border-radius: var(--r-xl);
+      padding: 80px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .e2e-panel { grid-template-columns: 60px 1fr; gap: 24px; }
+      .e2e-panel-right { grid-column: 2; }
+      .mba-grid { grid-template-columns: 1fr; }
+      .contrast-grid { grid-template-columns: 1fr; }
+      .contact-cta-band { padding: 48px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="nav-logo-mark">V</div>
+        <span class="nav-logo-text">Veteran Service Connect</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="nav-links">
+        <a href="/jira">Jira</a>
+        <a href="/businessconsulting" class="active">Consulting</a>
+        <a href="/mobileappdesign">Mobile Apps</a>
+        <a href="/productivity">Productivity</a>
+        <a href="#contact" class="btn btn-primary btn-sm">Book a Session</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="orb orb-2" style="opacity:0.5;left:auto;right:5%"></div>
+      <div class="hero-dots" style="opacity:0.4"></div>
+      <div class="container">
+        <p class="eyebrow reveal" style="color:#8B5CF6">Business Consulting &nbsp;·&nbsp; Technical Product Management</p>
+        <h1 class="display-l reveal reveal-delay-1" style="max-width:820px;margin-top:16px;margin-bottom:24px;">
+          The E-2-E Framework.<br />
+          <span style="background:linear-gradient(135deg,#8B5CF6,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Strategy through shipment.</span>
+        </h1>
+        <p class="body-l reveal reveal-delay-2" style="color:var(--text-2);max-width:580px;margin-bottom:40px;">
+          Most consultants hand you a strategy deck and leave. VSC runs the entire product lifecycle — from customer discovery through go-to-market — as a single, accountable engagement.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-3">
+          <a href="#contact" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#8B5CF6,#6366F1)">Book a Strategy Session</a>
+          <a href="#framework" class="btn btn-ghost btn-lg">See the Framework</a>
+        </div>
+        <div style="margin-top:48px;display:flex;gap:24px;flex-wrap:wrap;" class="reveal reveal-delay-4">
+          <div class="stat-item">
+            <div class="stat-num" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">26+</div>
+            <div class="stat-label">Years Combined Experience</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-num" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">E-2-E</div>
+            <div class="stat-label">Proprietary 5-Stage Methodology</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-num" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">NYU</div>
+            <div class="stat-label">Stern MBA — Strategy &amp; TPM</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="glow-line"></div>
+
+    <!-- CONTRAST: NOT / YES -->
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <p class="eyebrow" style="color:#8B5CF6">Our Difference</p>
+          <h2 class="headline">We're not a strategy firm. We're not a dev shop. We're both.</h2>
+        </div>
+        <div class="contrast-grid reveal reveal-delay-1">
+          <div class="contrast-col contrast-no">
+            <h3><span style="color:#EF4444">✕</span> Traditional Consulting</h3>
+            <ul>
+              <li><span style="color:#EF4444;flex-shrink:0">—</span> Strategy deliverable with no implementation path</li>
+              <li><span style="color:#EF4444;flex-shrink:0">—</span> Slides handed to a separate technical team</li>
+              <li><span style="color:#EF4444;flex-shrink:0">—</span> Assumptions never validated with real users</li>
+              <li><span style="color:#EF4444;flex-shrink:0">—</span> No accountability past the presentation date</li>
+              <li><span style="color:#EF4444;flex-shrink:0">—</span> Generic frameworks applied to your specific problem</li>
+            </ul>
+          </div>
+          <div class="contrast-col contrast-yes">
+            <h3><span style="color:#8B5CF6">✓</span> VSC E-2-E</h3>
+            <ul>
+              <li><span style="color:#8B5CF6;flex-shrink:0">+</span> Discovery through go-to-market — one partner</li>
+              <li><span style="color:#8B5CF6;flex-shrink:0">+</span> Strategy validated with real user research</li>
+              <li><span style="color:#8B5CF6;flex-shrink:0">+</span> Prototype testing before a line of production code</li>
+              <li><span style="color:#8B5CF6;flex-shrink:0">+</span> Measurable outcomes agreed before engagement starts</li>
+              <li><span style="color:#8B5CF6;flex-shrink:0">+</span> Run by a founder who's shipped four products himself</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- E-2-E DEEP DIVE -->
+    <section class="section" id="framework">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow" style="color:#8B5CF6">The Framework</p>
+          <h2 class="headline">Five stages. Zero gaps.</h2>
+          <p class="body-l" style="color:var(--text-2);max-width:560px;">Each stage has defined inputs, outputs, and acceptance criteria. Engagements don't move to the next stage without evidence.</p>
+        </div>
+        <div class="e2e-deep reveal reveal-delay-1">
+          <div class="e2e-panel">
+            <div class="e2e-panel-num">01</div>
+            <div class="e2e-panel-left">
+              <span class="badge badge-outline" style="border-color:rgba(139,92,246,0.3);color:#A78BFA;background:rgba(139,92,246,0.08);">Discovery</span>
+              <h3>Segment &amp; Discover</h3>
+              <p>We identify the right customer segments through structured research — interviews, observational study, and quantitative data — then synthesize insights into prioritized hypotheses. This isn't a survey. It's a rigorous investigation.</p>
+            </div>
+            <div class="e2e-panel-right">
+              <h4>Stage Deliverables</h4>
+              <ul class="e2e-deliverables">
+                <li>Customer segment map with validation evidence</li>
+                <li>User research synthesis (verbatims, patterns, jobs-to-be-done)</li>
+                <li>Prioritized insight stack</li>
+                <li>Hypothesis backlog for next stage</li>
+              </ul>
+            </div>
+          </div>
+          <div class="e2e-panel">
+            <div class="e2e-panel-num">02</div>
+            <div class="e2e-panel-left">
+              <span class="badge badge-outline" style="border-color:rgba(139,92,246,0.3);color:#A78BFA;background:rgba(139,92,246,0.08);">Definition</span>
+              <h3>Define Value</h3>
+              <p>Evidence-based value proposition construction. We turn insights into assumptions, and assumptions into testable hypotheses. Every claim is tied to user evidence — not executive opinion. This stage is where most products win or lose before they're built.</p>
+            </div>
+            <div class="e2e-panel-right">
+              <h4>Stage Deliverables</h4>
+              <ul class="e2e-deliverables">
+                <li>Value proposition canvas (validated)</li>
+                <li>Assumption map (ranked by risk)</li>
+                <li>Competitive positioning framework</li>
+                <li>Riskiest Assumption Test (RAT) designs</li>
+              </ul>
+            </div>
+          </div>
+          <div class="e2e-panel">
+            <div class="e2e-panel-num">03</div>
+            <div class="e2e-panel-left">
+              <span class="badge badge-outline" style="border-color:rgba(139,92,246,0.3);color:#A78BFA;background:rgba(139,92,246,0.08);">Design &amp; Validate</span>
+              <h3>Prototype &amp; Test</h3>
+              <p>We design solutions against the riskiest assumptions first — then run structured usability tests before a single line of production code is committed. This stage eliminates the most expensive mistake in product development: building the wrong thing.</p>
+            </div>
+            <div class="e2e-panel-right">
+              <h4>Stage Deliverables</h4>
+              <ul class="e2e-deliverables">
+                <li>Lo-fi and hi-fi prototype artifacts</li>
+                <li>Usability test protocol and execution</li>
+                <li>Test findings synthesis</li>
+                <li>Design iteration log</li>
+                <li>Go/no-go recommendation with evidence</li>
+              </ul>
+            </div>
+          </div>
+          <div class="e2e-panel">
+            <div class="e2e-panel-num">04</div>
+            <div class="e2e-panel-left">
+              <span class="badge badge-outline" style="border-color:rgba(139,92,246,0.3);color:#A78BFA;background:rgba(139,92,246,0.08);">Build</span>
+              <h3>Build &amp; Measure</h3>
+              <p>Product leadership through the build phase — evidence-based backlog prioritization, resource management, design review, and real-time performance measurement. We set the instrumentation strategy before engineering writes code.</p>
+            </div>
+            <div class="e2e-panel-right">
+              <h4>Stage Deliverables</h4>
+              <ul class="e2e-deliverables">
+                <li>Prioritized product backlog (with evidence scores)</li>
+                <li>Sprint planning and capacity framework</li>
+                <li>Analytics instrumentation plan</li>
+                <li>Product-market fit measurement protocol</li>
+              </ul>
+            </div>
+          </div>
+          <div class="e2e-panel">
+            <div class="e2e-panel-num">05</div>
+            <div class="e2e-panel-left">
+              <span class="badge badge-outline" style="border-color:rgba(139,92,246,0.3);color:#A78BFA;background:rgba(139,92,246,0.08);">Go-to-Market</span>
+              <h3>Ship &amp; Scale</h3>
+              <p>Launch strategy, positioning, and GTM execution — including crossing-the-chasm planning and product-market fit testing. We use the Sean Ellis "40% very disappointed" benchmark as the minimum bar for scale investment.</p>
+            </div>
+            <div class="e2e-panel-right">
+              <h4>Stage Deliverables</h4>
+              <ul class="e2e-deliverables">
+                <li>GTM strategy and channel plan</li>
+                <li>Launch sequencing playbook</li>
+                <li>PMF testing framework (Ellis benchmark)</li>
+                <li>Scale decision criteria</li>
+                <li>Post-launch measurement dashboard</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MBA FRAMEWORKS -->
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <p class="eyebrow" style="color:#8B5CF6">The Academic Foundation</p>
+          <h2 class="headline">MBA frameworks, applied to real products.</h2>
+          <p class="body-l" style="color:var(--text-2);">NYU Stern's Langone MBA program isn't theoretical. The frameworks Garrett applies at VSC come from coursework built for working operators — tested against real-world cases.</p>
+        </div>
+        <div class="mba-grid reveal reveal-delay-1">
+          <div class="mba-card">
+            <div class="label">Strategy</div>
+            <h3>Porter's Five Forces &amp; RBV</h3>
+            <p>Every engagement starts with an industry analysis. We don't design products in a vacuum — we position them against real competitive forces and identify durable advantages.</p>
+          </div>
+          <div class="mba-card">
+            <div class="label">Behavioral Economics</div>
+            <h3>Prospect Theory &amp; Choice Architecture</h3>
+            <p>Product decisions grounded in how users actually behave — not how we assume they behave. Loss aversion, anchoring, and mental accounting applied at the design level.</p>
+          </div>
+          <div class="mba-card">
+            <div class="label">Tech Product Management</div>
+            <h3>E-2-E Discovery &amp; Validation</h3>
+            <p>The full TPM lifecycle — from "Talking to Humans" customer discovery through Sean Ellis PMF testing. Applied across Stillwater, Naera, and every VSC client engagement.</p>
+          </div>
+          <div class="mba-card">
+            <div class="label">Data &amp; Analytics</div>
+            <h3>Evidence-Based Prioritization</h3>
+            <p>A/B testing design, causal inference, regression models, and BI dashboards. Product decisions tied to data, not intuition — with the statistical rigor to tell the difference.</p>
+          </div>
+          <div class="mba-card">
+            <div class="label">Entrepreneurship</div>
+            <h3>Launch Decision Process</h3>
+            <p>Is there an opportunity? Is it an opportunity for you? What's the investment case? The Okun framework prevents the two most expensive startup errors: fog of excitement and FOMO-driven premature launch.</p>
+          </div>
+          <div class="mba-card">
+            <div class="label">Negotiation</div>
+            <h3>BATNA &amp; Integrative Bargaining</h3>
+            <p>Contract negotiations, vendor selection, and partnership structuring handled with formal negotiation theory — not gut feel. Clients keep more of what they build.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-cta-band reveal">
+          <p class="eyebrow" style="color:#8B5CF6;margin-bottom:16px;">Ready?</p>
+          <h2 class="headline" style="margin-bottom:16px;">Book a Strategy Session</h2>
+          <p class="body-l" style="color:var(--text-2);max-width:480px;margin:0 auto 40px;">
+            60 minutes. We'll map your current state, identify the highest-leverage stage in the E-2-E framework for your situation, and define what a focused engagement looks like.
+          </p>
+          <a href="mailto:info@veteranserviceconnect.com?subject=Strategy Session Request" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#8B5CF6,#6366F1)">Book a Strategy Session</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo"><div class="nav-logo-mark">V</div><span class="nav-logo-text">Veteran Service Connect</span></a>
+          <p>End-to-End Technical Product Management. Founder-led. SDVOSB certified.</p>
+          <span class="badge badge-gold">SDVOSB Certified</span>
+        </div>
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <h4>Framework</h4>
+            <a href="#framework">E-2-E Overview</a>
+            <a href="#framework">Stage 1: Discover</a>
+            <a href="#framework">Stage 2: Define</a>
+            <a href="#framework">Stage 5: GTM</a>
+          </div>
+          <div class="footer-col">
+            <h4>VSC</h4>
+            <a href="/">Home</a>
+            <a href="/jira">Jira Consulting</a>
+            <a href="/mobileappdesign">Mobile Apps</a>
+            <a href="/productivity">Productivity</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:info@veteranserviceconnect.com">info@veteranserviceconnect.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Veteran Service Connect LLC. All rights reserved.</p>
+        <div class="footer-built">Built by <span>VSC</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

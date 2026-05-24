@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" data-page="mobileappdesign">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VSC Mobile App Design — Stillwater ASMR, Naera property management. From concept to App Store, built by a founder who's done it." />
+  <title>Mobile App Design — Veteran Service Connect</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .page-hero { background: linear-gradient(180deg, rgba(236,72,153,0.05) 0%, transparent 100%); }
+
+    /* App showcase */
+    .app-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .app-showcase.reverse { direction: rtl; }
+    .app-showcase.reverse > * { direction: ltr; }
+
+    .app-info .badge { margin-bottom: 20px; }
+    .app-info h2 {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 3.5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      line-height: 1.05;
+    }
+    .app-info .tagline {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-2);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    .app-info p { color: var(--text-2); line-height: 1.8; margin-bottom: 16px; }
+    .app-info .app-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    /* Phone mockup (CSS-only) */
+    .phone-mockup {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+    .phone-shell {
+      width: 260px;
+      border-radius: 40px;
+      background: var(--surface-3);
+      border: 1.5px solid var(--border);
+      padding: 16px 10px;
+      position: relative;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+    }
+    .phone-notch {
+      width: 80px;
+      height: 24px;
+      background: var(--bg);
+      border-radius: 12px;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .phone-notch-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--surface-2);
+    }
+    .phone-notch-pill {
+      width: 40px; height: 8px; border-radius: 4px; background: var(--surface-2);
+    }
+    .phone-screen {
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 440px;
+    }
+
+    /* Stillwater app screen */
+    .sw-screen {
+      background: #0A0A0F;
+      padding: 20px 16px;
+      min-height: 440px;
+      display: flex;
+      flex-direction: column;
+    }
+    .sw-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .sw-logo { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: #00E5CC; }
+    .sw-icon { width: 28px; height: 28px; border-radius: 8px; background: rgba(0,229,204,0.15); border: 1px solid rgba(0,229,204,0.3); display: flex; align-items: center; justify-content: center; }
+    .sw-section-label { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #555570; margin-bottom: 10px; }
+    .sw-mixer-layers { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .sw-layer { display: flex; align-items: center; gap: 8px; background: #141420; border-radius: 10px; padding: 8px 10px; }
+    .sw-layer-icon { width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0; }
+    .sw-layer-name { font-size: 10px; font-weight: 600; color: #8888AA; flex: 1; }
+    .sw-layer-vol { width: 60px; height: 3px; background: #2A2A3A; border-radius: 2px; position: relative; }
+    .sw-layer-vol-fill { height: 100%; border-radius: 2px; }
+    .sw-waveform { height: 30px; display: flex; align-items: center; gap: 2px; margin-bottom: 16px; overflow: hidden; }
+    .sw-bar { background: #00E5CC; border-radius: 2px; opacity: 0.6; }
+    .sw-controls { display: flex; justify-content: center; gap: 16px; align-items: center; }
+    .sw-play { width: 40px; height: 40px; border-radius: 50%; background: #00E5CC; display: flex; align-items: center; justify-content: center; }
+    .sw-ctrl { width: 28px; height: 28px; border-radius: 50%; background: #141420; border: 1px solid #2A2A3A; display: flex; align-items: center; justify-content: center; }
+
+    /* Naera app screen */
+    .naera-screen {
+      background: #F8F4EF;
+      padding: 20px 16px;
+      min-height: 440px;
+      display: flex;
+      flex-direction: column;
+    }
+    .naera-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .naera-logo { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #1A1A2E; }
+    .naera-prop-card {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .naera-prop-img {
+      height: 70px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .naera-prop-info { padding: 10px 12px; }
+    .naera-prop-name { font-size: 11px; font-weight: 700; color: #1A1A2E; margin-bottom: 2px; }
+    .naera-prop-addr { font-size: 9px; color: #888; margin-bottom: 6px; }
+    .naera-prop-stats { display: flex; gap: 8px; }
+    .naera-stat { font-size: 9px; font-weight: 600; padding: 2px 6px; border-radius: 4px; background: #F0F0F0; color: #555; }
+    .naera-stat.green { background: #D1FAE5; color: #065F46; }
+
+    /* Process */
+    .process-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .process-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 32px 24px;
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .process-card:hover { border-color: rgba(236,72,153,0.3); transform: translateY(-2px); }
+    .process-card-num {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 800;
+      color: rgba(236,72,153,0.15);
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+    .process-card h3 { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .process-card p { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .app-showcase { grid-template-columns: 1fr; gap: 48px; }
+      .app-showcase.reverse { direction: ltr; }
+      .phone-mockup { order: -1; }
+      .process-cards { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 500px) {
+      .process-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="nav-logo-mark">V</div>
+        <span class="nav-logo-text">Veteran Service Connect</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="nav-links">
+        <a href="/jira">Jira</a>
+        <a href="/businessconsulting">Consulting</a>
+        <a href="/mobileappdesign" class="active">Mobile Apps</a>
+        <a href="/productivity">Productivity</a>
+        <a href="#contact" class="btn btn-primary btn-sm">Start a Project</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="orb orb-3" style="opacity:0.6;bottom:auto;top:20%;left:auto;right:10%"></div>
+      <div class="hero-dots" style="opacity:0.4"></div>
+      <div class="container">
+        <p class="eyebrow reveal" style="color:#EC4899">Mobile App Design &nbsp;·&nbsp; iOS &amp; Beyond</p>
+        <h1 class="display-l reveal reveal-delay-1" style="max-width:800px;margin-top:16px;margin-bottom:24px;">
+          Apps built by someone<br />
+          <span style="background:linear-gradient(135deg,#EC4899,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">who ships apps.</span>
+        </h1>
+        <p class="body-l reveal reveal-delay-2" style="color:var(--text-2);max-width:580px;margin-bottom:40px;">
+          VSC has shipped real iOS products to the App Store — not wireframes, not prototypes, not pitch decks. Live products with real users. We bring that founder-level understanding to every client engagement.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-3">
+          <a href="#contact" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#EC4899,#8B5CF6)">Start a Project</a>
+          <a href="#portfolio" class="btn btn-ghost btn-lg">See Our Portfolio</a>
+        </div>
+        <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-4">
+          <span class="badge" style="background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.25);color:#F9A8D4;">2 Live App Store Products</span>
+          <span class="badge badge-indigo">React Native · Expo</span>
+          <span class="badge badge-outline">iOS · Android</span>
+          <span class="badge badge-gold">SDVOSB Certified</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="glow-line"></div>
+
+    <!-- PORTFOLIO -->
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow" style="color:#EC4899">Portfolio</p>
+          <h2 class="headline">Built. Shipped. Alive.</h2>
+        </div>
+
+        <!-- STILLWATER -->
+        <div class="app-showcase" style="margin-bottom:120px;">
+          <div class="app-info reveal">
+            <span class="badge" style="background:rgba(0,229,204,0.1);border:1px solid rgba(0,229,204,0.25);color:#5EEAD4;margin-bottom:20px;display:inline-flex;">Live on App Store · iOS</span>
+            <h2>Stillwater</h2>
+            <p class="tagline">"Your Neural Sound Bath"</p>
+            <p>A premium ASMR and neural audio app that lets users build personalized, layered soundscapes — up to 10 simultaneous tracks with independent volume control. Built on React Native with Expo, backed by Supabase, monetized through RevenueCat.</p>
+            <p>Stillwater isn't a meditation app. It's a personal neurological audio environment, purpose-built for the ASMR experience — and it's live in the App Store right now.</p>
+            <div class="app-meta">
+              <span class="badge badge-outline">React Native</span>
+              <span class="badge badge-outline">Expo SDK 52</span>
+              <span class="badge badge-outline">Supabase</span>
+              <span class="badge badge-outline">RevenueCat</span>
+              <span class="badge badge-outline">PostHog</span>
+              <span class="badge badge-outline">EAS Build</span>
+            </div>
+            <div style="margin-top:32px;">
+              <a href="https://apps.apple.com" target="_blank" rel="noopener" class="btn btn-ghost" style="border-color:rgba(0,229,204,0.3);color:#5EEAD4;">View on App Store →</a>
+            </div>
+          </div>
+          <div class="phone-mockup reveal reveal-delay-2">
+            <div class="phone-shell">
+              <div class="phone-notch">
+                <div class="phone-notch-dot"></div>
+                <div class="phone-notch-pill"></div>
+              </div>
+              <div class="phone-screen">
+                <div class="sw-screen">
+                  <div class="sw-header">
+                    <span class="sw-logo">stillwater</span>
+                    <div class="sw-icon"><svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path d="M12 6v6l4 2" stroke="#00E5CC" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#00E5CC" stroke-width="2"/></svg></div>
+                  </div>
+                  <div class="sw-section-label">Now Mixing — 3 layers</div>
+                  <div class="sw-mixer-layers">
+                    <div class="sw-layer">
+                      <div class="sw-layer-icon" style="background:rgba(0,229,204,0.2);">🌊</div>
+                      <div class="sw-layer-name">Ocean Waves</div>
+                      <div class="sw-layer-vol"><div class="sw-layer-vol-fill" style="width:75%;background:#00E5CC;"></div></div>
+                    </div>
+                    <div class="sw-layer">
+                      <div class="sw-layer-icon" style="background:rgba(123,97,255,0.2);">🌧️</div>
+                      <div class="sw-layer-name">Soft Rain</div>
+                      <div class="sw-layer-vol"><div class="sw-layer-vol-fill" style="width:50%;background:#7B61FF;"></div></div>
+                    </div>
+                    <div class="sw-layer">
+                      <div class="sw-layer-icon" style="background:rgba(255,215,0,0.2);">🔥</div>
+                      <div class="sw-layer-name">Crackling Fire</div>
+                      <div class="sw-layer-vol"><div class="sw-layer-vol-fill" style="width:30%;background:#FFD700;"></div></div>
+                    </div>
+                  </div>
+                  <div class="sw-waveform">
+                    <div class="sw-bar" style="height:8px;width:3px;"></div>
+                    <div class="sw-bar" style="height:14px;width:3px;"></div>
+                    <div class="sw-bar" style="height:20px;width:3px;"></div>
+                    <div class="sw-bar" style="height:16px;width:3px;"></div>
+                    <div class="sw-bar" style="height:22px;width:3px;"></div>
+                    <div class="sw-bar" style="height:12px;width:3px;"></div>
+                    <div class="sw-bar" style="height:18px;width:3px;"></div>
+                    <div class="sw-bar" style="height:24px;width:3px;"></div>
+                    <div class="sw-bar" style="height:16px;width:3px;"></div>
+                    <div class="sw-bar" style="height:10px;width:3px;"></div>
+                    <div class="sw-bar" style="height:20px;width:3px;"></div>
+                    <div class="sw-bar" style="height:14px;width:3px;"></div>
+                    <div class="sw-bar" style="height:8px;width:3px;"></div>
+                    <div class="sw-bar" style="height:18px;width:3px;"></div>
+                    <div class="sw-bar" style="height:22px;width:3px;"></div>
+                  </div>
+                  <div class="sw-controls">
+                    <div class="sw-ctrl"><svg width="12" height="12" viewBox="0 0 24 24" fill="#555570"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5" stroke="#555570" stroke-width="2"/></svg></div>
+                    <div class="sw-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#0A0A0F"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+                    <div class="sw-ctrl"><svg width="12" height="12" viewBox="0 0 24 24" fill="#555570"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19" stroke="#555570" stroke-width="2"/></svg></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAERA -->
+        <div class="app-showcase reverse">
+          <div class="app-info reveal">
+            <span class="badge" style="background:rgba(102,126,234,0.1);border:1px solid rgba(102,126,234,0.25);color:#A5B4FC;margin-bottom:20px;display:inline-flex;">Property Management · iOS</span>
+            <h2>Naera</h2>
+            <p class="tagline">"Property management, simplified."</p>
+            <p>A clean-first property management iOS app designed for independent landlords and small portfolios. Naera focuses on the actual problems: lease tracking, rent collection visibility, maintenance coordination, and tenant communication — without the complexity of enterprise platforms that assume you're running 500 units.</p>
+            <p>Built with the same React Native + Expo stack as Stillwater, with Supabase handling auth, data, and storage.</p>
+            <div class="app-meta">
+              <span class="badge badge-outline">React Native</span>
+              <span class="badge badge-outline">Expo Router</span>
+              <span class="badge badge-outline">Supabase</span>
+              <span class="badge badge-outline">TypeScript</span>
+            </div>
+          </div>
+          <div class="phone-mockup reveal reveal-delay-2">
+            <div class="phone-shell">
+              <div class="phone-notch">
+                <div class="phone-notch-dot"></div>
+                <div class="phone-notch-pill"></div>
+              </div>
+              <div class="phone-screen">
+                <div class="naera-screen">
+                  <div class="naera-header">
+                    <span class="naera-logo">naera</span>
+                    <span style="font-size:9px;font-weight:600;color:#888;background:#F0EDE8;padding:3px 8px;border-radius:12px;">3 Properties</span>
+                  </div>
+                  <div style="font-size:9px;font-weight:600;color:#888;margin-bottom:8px;letter-spacing:0.08em;text-transform:uppercase;">Active Portfolio</div>
+                  <div class="naera-prop-card">
+                    <div class="naera-prop-img">🏢</div>
+                    <div class="naera-prop-info">
+                      <div class="naera-prop-name">The Riverside Apt.</div>
+                      <div class="naera-prop-addr">247 Riverside Dr, New York NY</div>
+                      <div class="naera-prop-stats">
+                        <span class="naera-stat green">Rent: Paid</span>
+                        <span class="naera-stat">2 Tenants</span>
+                        <span class="naera-stat">Lease: 8mo</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="naera-prop-card">
+                    <div class="naera-prop-img" style="background:linear-gradient(135deg,#f093fb,#f5576c)">🏠</div>
+                    <div class="naera-prop-info">
+                      <div class="naera-prop-name">Brooklyn Studio</div>
+                      <div class="naera-prop-addr">88 Atlantic Ave, Brooklyn NY</div>
+                      <div class="naera-prop-stats">
+                        <span class="naera-stat" style="background:#FEE2E2;color:#991B1B;">Rent: Due</span>
+                        <span class="naera-stat">1 Tenant</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="margin-top:auto;background:white;border-radius:12px;padding:10px 12px;display:flex;justify-content:space-around;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+                    <div style="text-align:center;">
+                      <div style="font-size:14px;font-weight:800;color:#1A1A2E;">$6,200</div>
+                      <div style="font-size:8px;color:#888;">Monthly Rent</div>
+                    </div>
+                    <div style="width:1px;background:#F0EDE8;"></div>
+                    <div style="text-align:center;">
+                      <div style="font-size:14px;font-weight:800;color:#065F46;">$5,400</div>
+                      <div style="font-size:8px;color:#888;">Collected</div>
+                    </div>
+                    <div style="width:1px;background:#F0EDE8;"></div>
+                    <div style="text-align:center;">
+                      <div style="font-size:14px;font-weight:800;color:#B45309;">1</div>
+                      <div style="font-size:8px;color:#888;">Open Task</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <p class="eyebrow" style="color:#EC4899">How We Work</p>
+          <h2 class="headline">From idea to App Store in four stages.</h2>
+        </div>
+        <div class="process-cards reveal reveal-delay-1">
+          <div class="process-card">
+            <div class="process-card-num">01</div>
+            <h3>Discovery &amp; Scope</h3>
+            <p>User research, competitive analysis, and feature scope definition. We validate the idea before writing a line of code.</p>
+          </div>
+          <div class="process-card">
+            <div class="process-card-num">02</div>
+            <h3>Design &amp; Prototype</h3>
+            <p>High-fidelity designs, design system, and interactive prototype. Usability tested with real users before build begins.</p>
+          </div>
+          <div class="process-card">
+            <div class="process-card-num">03</div>
+            <h3>Build &amp; Test</h3>
+            <p>React Native development with TypeScript. TestFlight distribution. Continuous delivery with EAS Build.</p>
+          </div>
+          <div class="process-card">
+            <div class="process-card-num">04</div>
+            <h3>Launch &amp; Grow</h3>
+            <p>App Store submission, review, and approval. Post-launch analytics, iteration, and growth strategy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div style="background:linear-gradient(135deg,rgba(236,72,153,0.08),rgba(139,92,246,0.06));border:1px solid rgba(236,72,153,0.2);border-radius:var(--r-xl);padding:80px;text-align:center;" class="reveal">
+          <p class="eyebrow" style="color:#EC4899;margin-bottom:16px;">Ready to Build?</p>
+          <h2 class="headline" style="margin-bottom:16px;">Let's talk about your app.</h2>
+          <p class="body-l" style="color:var(--text-2);max-width:480px;margin:0 auto 40px;">We work with founders and companies who have an idea worth building. Bring us the problem — we'll tell you honestly if we're the right fit.</p>
+          <a href="mailto:info@veteranserviceconnect.com?subject=Mobile App Project" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#EC4899,#8B5CF6)">Start a Conversation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo"><div class="nav-logo-mark">V</div><span class="nav-logo-text">Veteran Service Connect</span></a>
+          <p>Mobile App Design. Built by a founder who ships. SDVOSB certified.</p>
+          <span class="badge badge-gold">SDVOSB Certified</span>
+        </div>
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <h4>Portfolio</h4>
+            <a href="#portfolio">Stillwater</a>
+            <a href="#portfolio">Naera</a>
+          </div>
+          <div class="footer-col">
+            <h4>VSC</h4>
+            <a href="/">Home</a>
+            <a href="/jira">Jira Consulting</a>
+            <a href="/businessconsulting">Consulting</a>
+            <a href="/productivity">Productivity</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:info@veteranserviceconnect.com">info@veteranserviceconnect.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Veteran Service Connect LLC. All rights reserved.</p>
+        <div class="footer-built">Built by <span>VSC</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

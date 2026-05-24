@@ -1,36 +1,463 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="home">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Veteran Service Connect — Atlassian Gold Solution Partner serving Federal, State, and Education sectors. SDVOSB certified. SAM.gov registered." />
-  <meta property="og:title" content="Veteran Service Connect" />
-  <meta property="og:description" content="Military precision. Atlassian expertise. Built for government." />
-  <meta property="og:image" content="/assets/og-image.png" />
+  <meta name="description" content="Veteran Service Connect — End-to-End Technical Product Management & Jira Consultation. SDVOSB certified. Founded by an NYU Stern MBA and USAF veteran." />
+  <meta property="og:title" content="Veteran Service Connect — E-2-E Technical Consulting" />
+  <meta property="og:description" content="Military precision meets MBA strategy. Jira, TPM, mobile apps, and growth systems — end-to-end." />
   <title>Veteran Service Connect</title>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    /* ---- HOME-SPECIFIC ---- */
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+    .hero-inner .eyebrow { margin-bottom: 24px; }
+    .hero-headline { margin-bottom: 24px; }
+    .hero-sub {
+      font-size: 20px;
+      color: var(--text-2);
+      line-height: 1.7;
+      max-width: 580px;
+      margin-bottom: 40px;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 80px;
+    }
+    .hero-stats-row {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    /* ---- BENTO GRID ---- */
+    .services-bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+    .bento-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 280px;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.25s, transform 0.25s var(--ease-spring), box-shadow 0.25s;
+    }
+    .bento-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .bento-card:hover::before { opacity: 1; }
+
+    /* Jira card - spans 7/12 columns and 2 rows */
+    .bento-jira {
+      grid-column: 1 / 8;
+      grid-row: 1 / 3;
+      min-height: 580px;
+    }
+    .bento-jira::before { background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(99,102,241,0.08), transparent); }
+
+    /* Three right cards */
+    .bento-consulting { grid-column: 8 / 13; grid-row: 1 / 2; }
+    .bento-consulting::before { background: radial-gradient(ellipse 60% 60% at 100% 0%, rgba(139,92,246,0.08), transparent); }
+
+    .bento-apps { grid-column: 8 / 13; grid-row: 2 / 3; }
+    .bento-apps::before { background: radial-gradient(ellipse 60% 60% at 100% 100%, rgba(236,72,153,0.08), transparent); }
+
+    .bento-card-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .bento-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .bento-jira h3 { font-size: 32px; }
+    .bento-consulting h3, .bento-apps h3 { font-size: 22px; }
+
+    .bento-card p {
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .bento-jira p { font-size: 17px; }
+    .bento-consulting p, .bento-apps p { font-size: 15px; }
+
+    .bento-card-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 24px;
+      transition: gap 0.2s;
+    }
+    .bento-card:hover .bento-card-arrow { gap: 12px; }
+
+    .bento-jira .bento-card-eyebrow { color: #6366F1; }
+    .bento-jira .bento-card-arrow { color: #6366F1; }
+    .bento-consulting .bento-card-eyebrow { color: #8B5CF6; }
+    .bento-consulting .bento-card-arrow { color: #8B5CF6; }
+    .bento-apps .bento-card-eyebrow { color: #EC4899; }
+    .bento-apps .bento-card-arrow { color: #EC4899; }
+
+    /* ---- BENTO DECORATIVE ELEMENT (jira card) ---- */
+    .jira-visual {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 300px;
+      height: 200px;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+    .bento-jira-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .bento-tag {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: var(--r-full);
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.2);
+      color: #A5B4FC;
+    }
+
+    /* ---- FOUNDER SECTION ---- */
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .founder-quote {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      border-left: 2px solid var(--a1);
+      padding-left: 24px;
+      margin-bottom: 32px;
+    }
+    .founder-bio p {
+      color: var(--text-2);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .founder-credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .founder-cred {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-2);
+    }
+    .cred-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--r-sm);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .founder-visual {
+      position: relative;
+    }
+    .founder-card-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .founder-stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .founder-stat-card .num {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .founder-stat-card .num.grad { }
+    .founder-stat-card .label {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    /* ---- E-2-E PROCESS ---- */
+    .e2e-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 64px;
+    }
+    .e2e-connector {
+      position: absolute;
+      top: 23px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--a1), var(--a2), var(--a3), transparent);
+      pointer-events: none;
+    }
+    .e2e-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 16px 40px;
+      position: relative;
+    }
+    .e2e-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--a1);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 20px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .e2e-step:hover .e2e-num {
+      background: rgba(99,102,241,0.15);
+      border-color: rgba(99,102,241,0.4);
+    }
+    .e2e-step h4 {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .e2e-step p {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    /* ---- PARTNERSHIP ---- */
+    .partnership-section {
+      background: var(--surface);
+      border-radius: var(--r-xl);
+      border: 1px solid var(--border);
+      padding: 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .partnership-section::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(99,102,241,0.06), transparent);
+      pointer-events: none;
+    }
+    .partnership-logo-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .partnership-main-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 20px 24px;
+    }
+    .partner-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--grad-brand);
+    }
+    .partnership-main-badge .name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .partnership-main-badge .tier {
+      margin-left: auto;
+    }
+    .client-proof {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .client-proof-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 4px;
+    }
+    .client-logos-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .client-pill {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-2);
+      padding: 6px 16px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-full);
+    }
+
+    /* ---- CTA BAND ---- */
+    .cta-band {
+      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(139,92,246,0.08));
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: var(--r-xl);
+      padding: 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(99,102,241,0.15), transparent);
+      pointer-events: none;
+    }
+    .cta-band h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .cta-band p {
+      font-size: 18px;
+      color: var(--text-2);
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-band-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive bento */
+    @media (max-width: 900px) {
+      .services-bento { grid-template-columns: 1fr; }
+      .bento-jira { grid-column: 1; grid-row: auto; min-height: 320px; }
+      .bento-consulting { grid-column: 1; grid-row: auto; }
+      .bento-apps { grid-column: 1; grid-row: auto; }
+      .founder-grid { grid-template-columns: 1fr; gap: 48px; }
+      .e2e-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .e2e-connector { display: none; }
+      .partnership-section { grid-template-columns: 1fr; gap: 40px; padding: 40px; }
+      .cta-band { padding: 48px 32px; }
+    }
+    @media (max-width: 600px) {
+      .e2e-steps { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <header class="nav-header" id="nav-header">
+  <header class="nav" id="nav">
     <div class="container nav-inner">
       <a href="/" class="nav-logo">
-        <img src="/assets/logo.svg" alt="VSC" class="nav-logo-img" />
+        <div class="nav-logo-mark">V</div>
         <span class="nav-logo-text">Veteran Service Connect</span>
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
       <nav class="nav-links" id="nav-links">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#partnerships">Partnerships</a>
-        <a href="#contact" class="btn btn-primary btn-sm">Request a Quote</a>
+        <a href="/jira">Jira</a>
+        <a href="/businessconsulting">Consulting</a>
+        <a href="/mobileappdesign">Mobile Apps</a>
+        <a href="/productivity">Productivity</a>
+        <a href="#contact" class="btn btn-primary btn-sm">Start a Project</a>
       </nav>
     </div>
   </header>
@@ -38,284 +465,258 @@
   <main>
 
     <!-- HERO -->
-    <section class="hero" id="hero">
-      <div class="hero-bg"></div>
-      <div class="container hero-inner">
-        <div class="hero-badges">
-          <span class="badge badge-outline">SDVOSB Certified — New York State</span>
-          <span class="badge badge-outline">SAM.gov Registered</span>
-        </div>
-        <h1 class="hero-headline">
-          Atlassian expertise built for<br />
-          <span class="gradient-text">government missions.</span>
-        </h1>
-        <p class="hero-sub">
-          Veteran Service Connect is an Atlassian Gold Solution Partner serving Federal, State, and Education clients — backed by military discipline and NYU MBA strategy.
-        </p>
-        <div class="hero-cta">
-          <a href="#contact" class="btn btn-primary btn-lg">Request a Quote</a>
-          <a href="#services" class="btn btn-ghost btn-lg">See Our Services</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-number">Gold</span>
-            <span class="stat-label">Atlassian Partner Tier</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-number">SDVOSB</span>
-            <span class="stat-label">Set-Aside Eligible</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-number">SLED</span>
-            <span class="stat-label">Federal · State · Education</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TRUST BAR -->
-    <section class="trust-bar">
-      <div class="container trust-inner">
-        <p class="trust-label">Recognized &amp; Registered</p>
-        <div class="trust-logos">
-          <div class="trust-item">
-            <img src="/assets/atlassian-partner.svg" alt="Atlassian Gold Partner" />
-          </div>
-          <div class="trust-item">
-            <img src="/assets/sam-gov.svg" alt="SAM.gov Registered" />
-          </div>
-          <div class="trust-item">
-            <img src="/assets/nys-sdvosb.svg" alt="NYS SDVOSB Certified" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="section" id="services">
+    <section class="hero">
+      <div class="hero-dots"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">What We Do</span>
-          <h2 class="section-title">End-to-end Atlassian solutions<br />for regulated environments.</h2>
-          <p class="section-sub">We handle the complexity of government procurement, compliance, and implementation so your teams can focus on the mission.</p>
-        </div>
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <h3>Compliant Licensing</h3>
-            <p>Navigate Atlassian licensing for government procurement channels — including Carahsoft and GSA schedules — with full compliance guidance.</p>
+        <div class="hero-inner">
+          <p class="eyebrow reveal">End-to-End Technical Consulting &nbsp;·&nbsp; SDVOSB Certified</p>
+          <h1 class="display-xl hero-headline reveal reveal-delay-1">
+            No handoffs.<br />
+            No gaps.<br />
+            <span class="grad-text">No exceptions.</span>
+          </h1>
+          <p class="hero-sub reveal reveal-delay-2">
+            Veteran Service Connect delivers end-to-end technical product management, Jira consultation, and digital product development — backed by 26+ years of combined experience and an NYU Stern MBA.
+          </p>
+          <div class="hero-cta-group reveal reveal-delay-3">
+            <a href="#contact" class="btn btn-gradient btn-lg">Start a Project</a>
+            <a href="/jira" class="btn btn-ghost btn-lg">Explore Jira Services</a>
           </div>
-          <div class="service-card">
-            <div class="service-icon">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke="currentColor" stroke-width="1.5"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="1.5"/></svg>
+          <div class="hero-stats-row reveal reveal-delay-4">
+            <div class="stat-item">
+              <div class="stat-num grad-text-blue" data-count="26">0</div>
+              <div class="stat-label">Years Combined Experience</div>
             </div>
-            <h3>Jira &amp; Confluence Admin</h3>
-            <p>Expert configuration, administration, and optimization of Jira Software, Jira Service Management, and Confluence for mission-critical workflows.</p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-num grad-text-blue">NYU</div>
+              <div class="stat-label">Stern MBA — Strategy & TPM</div>
             </div>
-            <h3>User Provisioning</h3>
-            <p>Structured user provisioning, role-based permissions, and SSO integration designed for the access-control requirements of government environments.</p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-num grad-text-blue">4</div>
+              <div class="stat-label">Live Products Shipped</div>
             </div>
-            <h3>Mission-Critical Support</h3>
-            <p>Dedicated support with SLA commitments built around government uptime requirements — responsive, documented, and accountable.</p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-num grad-text-blue">E-2-E</div>
+              <div class="stat-label">Proprietary Methodology</div>
             </div>
-            <h3>Implementation &amp; Optimization</h3>
-            <p>From greenfield deployments to legacy migrations, we implement Atlassian tools and continuously optimize them as your organization grows.</p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <h3>Procurement Strategy</h3>
-            <p>We help agencies navigate the full procurement lifecycle — from market research and RFP guidance to contract vehicle selection and award support.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WHY VSC -->
+    <!-- GLOW LINE -->
+    <div class="glow-line"></div>
+
+    <!-- SERVICES BENTO -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">What We Do</p>
+          <h2 class="headline">Four practices. One partner.</h2>
+        </div>
+        <div class="services-bento reveal reveal-delay-1">
+
+          <!-- JIRA — big card -->
+          <a href="/jira" class="bento-card bento-jira">
+            <div>
+              <p class="bento-card-eyebrow">Jira Consultation</p>
+              <h3>Your Jira implementation, finally done right.</h3>
+              <p>From greenfield deployments to enterprise migrations — we configure, optimize, and train teams on Jira Software and Jira Service Management. In partnership with Dione Technology (Atlassian Gold Partner), we cover the full stack from strategy to go-live.</p>
+              <div class="bento-jira-tags">
+                <span class="bento-tag">Jira Software</span>
+                <span class="bento-tag">Jira Service Mgmt</span>
+                <span class="bento-tag">Confluence</span>
+                <span class="bento-tag">Workflow Design</span>
+                <span class="bento-tag">Admin & Training</span>
+                <span class="bento-tag">Capacity Planning</span>
+              </div>
+            </div>
+            <span class="bento-card-arrow">Explore Jira Services →</span>
+          </a>
+
+          <!-- CONSULTING -->
+          <a href="/businessconsulting" class="bento-card bento-consulting">
+            <div>
+              <p class="bento-card-eyebrow">Business Consulting</p>
+              <h3>E-2-E Technical Product Management</h3>
+              <p>Strategy, research, prototype, validate, ship. We run the full TPM lifecycle so nothing falls between the cracks.</p>
+            </div>
+            <span class="bento-card-arrow">See the Framework →</span>
+          </a>
+
+          <!-- MOBILE APPS -->
+          <a href="/mobileappdesign" class="bento-card bento-apps">
+            <div>
+              <p class="bento-card-eyebrow">Mobile App Design</p>
+              <h3>From concept to App Store</h3>
+              <p>We've shipped iOS apps across wellness, property management, and productivity. We know what it takes to build products that survive contact with real users.</p>
+            </div>
+            <span class="bento-card-arrow">View Our Work →</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOUNDER SECTION -->
     <section class="section section-dark" id="about">
       <div class="container">
-        <div class="about-grid">
-          <div class="about-content">
-            <span class="section-tag">Who We Are</span>
-            <h2 class="section-title">Military precision.<br />MBA strategy.<br />Atlassian expertise.</h2>
-            <p>Founded by a U.S. Air Force veteran and NYU Stern MBA graduate, Veteran Service Connect brings a rare combination of operational discipline and strategic business acumen to every engagement.</p>
-            <p>We built VSC specifically to serve the SLED market — organizations that need a partner who understands both the technology and the compliance landscape, not just one or the other.</p>
-            <div class="about-features">
-              <div class="about-feature">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#4B8EF1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>SDVOSB certified — eligible for government set-aside contracts</span>
+        <div class="founder-grid">
+          <div class="founder-bio reveal">
+            <p class="eyebrow">The Founder</p>
+            <div class="founder-quote">
+              "Military service taught me that process isn't bureaucracy — it's the thing that makes exceptional outcomes repeatable."
+            </div>
+            <p>Garrett Deese is a U.S. Air Force veteran and NYU Stern MBA candidate who built VSC around a simple premise: elite consulting shouldn't require assembling five different vendors.</p>
+            <p>He's shipped iOS apps to the App Store, built GTM automation engines, designed Jira workflows for complex organizations, and developed a proprietary End-to-End methodology that treats every engagement as a product — with a discovery phase, a build phase, and a measured outcome.</p>
+            <p>VSC isn't a staffing agency. It's a founder-led consultancy where every engagement is run by someone who's built the thing they're advising on.</p>
+            <div class="founder-credentials">
+              <div class="founder-cred">
+                <div class="cred-icon">🎖️</div>
+                <span>U.S. Air Force veteran — operational discipline and accountability at scale</span>
               </div>
-              <div class="about-feature">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#4B8EF1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>SAM.gov registered for streamlined federal procurement</span>
+              <div class="founder-cred">
+                <div class="cred-icon">🎓</div>
+                <span>NYU Stern MBA (Langone) — Strategy, Tech Product Management, Behavioral Economics</span>
               </div>
-              <div class="about-feature">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#4B8EF1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>Atlassian Gold Solution Partner — certified expertise</span>
+              <div class="founder-cred">
+                <div class="cred-icon">📱</div>
+                <span>4 live digital products shipped — Stillwater, Naera, GTM Engine, Capacity Dashboard</span>
               </div>
-              <div class="about-feature">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#4B8EF1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>Subcontract-first model reduces overhead for prime contractors</span>
+              <div class="founder-cred">
+                <div class="cred-icon">✅</div>
+                <span>SDVOSB certified — New York State &amp; </span>
               </div>
             </div>
           </div>
-          <div class="about-visual">
-            <div class="about-card">
-              <div class="about-card-icon">🎖️</div>
-              <h4>Veteran-Owned</h4>
-              <p>U.S. Air Force veteran founder. We bring the discipline and accountability of military service to every client engagement.</p>
-            </div>
-            <div class="about-card">
-              <div class="about-card-icon">🎓</div>
-              <h4>MBA-Led Strategy</h4>
-              <p>NYU Stern MBA graduate. We pair technical depth with business strategy to deliver outcomes that move the needle.</p>
-            </div>
-            <div class="about-card">
-              <div class="about-card-icon">🏛️</div>
-              <h4>Government-Ready</h4>
-              <p>Built for Federal, State, and Education from day one — with the registrations, certifications, and compliance knowledge to match.</p>
+          <div class="founder-visual reveal reveal-delay-2">
+            <div class="founder-card-stack">
+              <div class="founder-stat-card">
+                <div>
+                  <div class="num grad-text">26+</div>
+                </div>
+                <div class="label">Years of combined experience across consulting, product, and delivery</div>
+              </div>
+              <div class="founder-stat-card">
+                <div>
+                  <div class="num grad-text">4</div>
+                </div>
+                <div class="label">Live digital products designed, built, and shipped to production</div>
+              </div>
+              <div class="founder-stat-card card-gradient-border">
+                <div style="width:100%">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                    <span style="font-size:13px;font-weight:600;color:var(--text-2)">NYU Stern MBA</span>
+                    <span class="badge badge-indigo">In Progress</span>
+                  </div>
+                  <div style="font-size:13px;color:var(--text-3);line-height:1.6;">
+                    Strategy · Tech Product Management · Behavioral Economics · Entrepreneurship · Data Analytics
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PARTNERSHIPS -->
-    <section class="section" id="partnerships">
+    <!-- E-2-E PROCESS -->
+    <section class="section" id="process">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Partnerships</span>
-          <h2 class="section-title">Connected to the right networks<br />to serve government clients.</h2>
-          <p class="section-sub">Our strategic partnerships give you access to government pricing, compliance frameworks, and specialized expertise — through a single veteran-owned partner.</p>
+        <div class="section-header centered reveal">
+          <p class="eyebrow">Our Methodology</p>
+          <h2 class="headline">The E-2-E Framework</h2>
+          <p class="body-l">A proprietary 5-stage process developed through technical product management research and applied across every VSC engagement. No guessing. No handoffs. Just execution.</p>
         </div>
-        <div class="partnerships-grid">
-          <div class="partnership-card">
-            <div class="partnership-logo">
-              <img src="/assets/atlassian-logo.svg" alt="Atlassian" />
-            </div>
-            <h3>Atlassian Gold Solution Partner</h3>
-            <p>Direct access to Atlassian licensing, support escalation, and product expertise through our certified partnership.</p>
+        <div class="e2e-steps reveal reveal-delay-1">
+          <div class="e2e-connector"></div>
+          <div class="e2e-step">
+            <div class="e2e-num">01</div>
+            <h4>Segment &amp; Discover</h4>
+            <p>Identify the right customer segments and validate them through structured user research and insight synthesis.</p>
           </div>
-          <div class="partnership-card">
-            <div class="partnership-logo">
-              <img src="/assets/carahsoft-logo.svg" alt="Carahsoft" />
-            </div>
-            <h3>Carahsoft Distribution Network</h3>
-            <p>Pending integration with Carahsoft's government IT distribution network, enabling access to GSA and other government contract vehicles.</p>
+          <div class="e2e-step">
+            <div class="e2e-num">02</div>
+            <h4>Define Value</h4>
+            <p>Construct a precise value proposition grounded in evidence — not assumptions. Blue Apron achieved 2× conversion through this step alone.</p>
           </div>
-          <div class="partnership-card">
-            <div class="partnership-logo">
-              <div class="partnership-logo-placeholder">🤝</div>
+          <div class="e2e-step">
+            <div class="e2e-num">03</div>
+            <h4>Design &amp; Test</h4>
+            <p>Build the riskiest assumption first. Usability test, iterate, and validate before a single line of production code is written.</p>
+          </div>
+          <div class="e2e-step">
+            <div class="e2e-num">04</div>
+            <h4>Build &amp; Measure</h4>
+            <p>Instrument every build. Evidence-based prioritization, resource management, and real-time performance measurement throughout.</p>
+          </div>
+          <div class="e2e-step">
+            <div class="e2e-num">05</div>
+            <h4>Go-to-Market</h4>
+            <p>Ship with a GTM strategy, not a wish. Product-market fit testing, crossing-the-chasm planning, and launch execution.</p>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:48px;" class="reveal reveal-delay-2">
+          <a href="/businessconsulting" class="btn btn-ghost btn-lg">Deep Dive the Framework →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERSHIP -->
+    <section class="section-sm section-dark">
+      <div class="container">
+        <div class="partnership-section reveal">
+          <div>
+            <p class="eyebrow" style="margin-bottom:16px;">Strategic Partnership</p>
+            <h2 class="headline" style="margin-bottom:16px;">Jira expertise at the highest tier.</h2>
+            <p class="body" style="color:var(--text-2);margin-bottom:32px;">
+              VSC partners with Dione Technology — an Atlassian <strong>Gold Solution Partner</strong> with a track record across global enterprise clients — to deliver Jira consultation that combines strategic product thinking with the deepest possible Atlassian technical expertise.
+            </p>
+            <a href="/jira" class="btn btn-primary">See Jira Services</a>
+          </div>
+          <div class="partnership-logo-group">
+            <div class="partnership-main-badge">
+              <div class="partner-dot"></div>
+              <span class="name">Dione Technology</span>
+              <span class="tier"><span class="badge badge-indigo">Gold Partner</span></span>
             </div>
-            <h3>Veteran Nonprofit Alliances</h3>
-            <p>Affiliated with veteran-focused nonprofit organizations, reinforcing our commitment to the veteran community beyond our business operations.</p>
+            <div class="client-proof">
+              <div class="client-proof-label">Partner client experience includes</div>
+              <div class="client-logos-row">
+                <span class="client-pill">BNP Paribas</span>
+                <span class="client-pill">Barclays</span>
+                <span class="client-pill">Société Générale</span>
+                <span class="client-pill">Collinson</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <span class="badge badge-indigo">Atlassian Gold Partner</span>
+              <span class="badge badge-gold">SDVOSB · VSC</span>
+              <span class="badge badge-outline"></span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- VALUE PROPS -->
-    <section class="section section-alt">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Why VSC</span>
-          <h2 class="section-title">Four reasons government agencies<br />choose Veteran Service Connect.</h2>
-        </div>
-        <div class="values-grid">
-          <div class="value-item">
-            <div class="value-number">01</div>
-            <h3>Streamlined Procurement</h3>
-            <p>SAM.gov registration means we're ready for federal contracting immediately — no waiting, no red tape from our end.</p>
+    <!-- CTA BAND -->
+    <section class="section">
+      <div class="container" id="contact">
+        <div class="cta-band reveal">
+          <p class="eyebrow" style="margin-bottom:16px;">Ready to Start?</p>
+          <h2>Let's solve it together.</h2>
+          <p>Whether you're untangling a Jira implementation, building a product from scratch, or need an end-to-end partner — we want to hear about it.</p>
+          <div class="cta-band-btns">
+            <a href="mailto:info@veteranserviceconnect.com" class="btn btn-gradient btn-lg">Email Us</a>
+            <a href="/jira#contact" class="btn btn-ghost btn-lg">Jira Assessment</a>
+            <a href="/businessconsulting#contact" class="btn btn-ghost btn-lg">Strategy Session</a>
           </div>
-          <div class="value-item">
-            <div class="value-number">02</div>
-            <h3>Seamless Expertise Access</h3>
-            <p>Our Gold-tier Atlassian partnership gives you access to specialized knowledge and direct escalation paths.</p>
-          </div>
-          <div class="value-item">
-            <div class="value-number">03</div>
-            <h3>Efficient Execution</h3>
-            <p>Our subcontract-first model reduces overhead for prime contractors and delivers faster time-to-value.</p>
-          </div>
-          <div class="value-item">
-            <div class="value-number">04</div>
-            <h3>Mission-Driven Commitment</h3>
-            <p>Veteran-led means accountability is in our DNA — we treat every engagement with the seriousness of a mission.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="contact-wrapper">
-          <div class="contact-content">
-            <span class="section-tag">Get in Touch</span>
-            <h2 class="section-title">Ready to move forward?</h2>
-            <p>Whether you're exploring Atlassian licensing, need a deployment partner, or want to discuss a subcontracting opportunity — we'd like to hear from you.</p>
-            <div class="contact-info">
-              <a href="mailto:info@veteranserviceconnect.com" class="contact-link">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                info@veteranserviceconnect.com
-              </a>
-              <a href="mailto:partner@veteranserviceconnect.com" class="contact-link">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                partner@veteranserviceconnect.com
-              </a>
-            </div>
-          </div>
-          <form class="contact-form" id="contact-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name" required />
-              </div>
-              <div class="form-group">
-                <label for="org">Organization</label>
-                <input type="text" id="org" name="org" placeholder="Agency or company" />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="you@agency.gov" required />
-            </div>
-            <div class="form-group">
-              <label for="interest">I'm interested in…</label>
-              <select id="interest" name="interest">
-                <option value="">Select a service</option>
-                <option>Atlassian Licensing</option>
-                <option>Jira / Confluence Administration</option>
-                <option>Implementation &amp; Optimization</option>
-                <option>Mission-Critical Support</option>
-                <option>Subcontracting Opportunity</option>
-                <option>General Inquiry</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4" placeholder="Tell us about your project or need…"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-            <p class="form-note">We typically respond within one business day.</p>
-          </form>
         </div>
       </div>
     </section>
@@ -324,41 +725,43 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <a href="/" class="nav-logo">
-          <span class="nav-logo-text">Veteran Service Connect</span>
-        </a>
-        <p>Atlassian Gold Solution Partner<br />serving the SLED market.</p>
-        <div class="footer-badges">
-          <span class="badge badge-sm">SDVOSB — NYS Certified</span>
-          <span class="badge badge-sm">SAM.gov Registered</span>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo" style="margin-bottom:0">
+            <div class="nav-logo-mark">V</div>
+            <span class="nav-logo-text">Veteran Service Connect</span>
+          </a>
+          <p>End-to-End Technical Product Management &amp; Jira Consultation. Veteran-owned. New York.</p>
+          <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start;">
+            <span class="badge badge-gold">SDVOSB Certified</span>
+            <span class="badge badge-outline"></span>
+          </div>
+        </div>
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <h4>Services</h4>
+            <a href="/jira">Jira Consultation</a>
+            <a href="/businessconsulting">Business Consulting</a>
+            <a href="/mobileappdesign">Mobile App Design</a>
+            <a href="/productivity">Productivity Tools</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#about">About VSC</a>
+            <a href="#process">E-2-E Framework</a>
+            <a href="/jira">Dione Partnership</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:info@veteranserviceconnect.com">info@veteranserviceconnect.com</a>
+            <a href="mailto:partner@veteranserviceconnect.com">partner@veteranserviceconnect.com</a>
+          </div>
         </div>
       </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <h4>Services</h4>
-          <a href="#services">Atlassian Licensing</a>
-          <a href="#services">Jira &amp; Confluence Admin</a>
-          <a href="#services">Implementation</a>
-          <a href="#services">Support</a>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="#about">About VSC</a>
-          <a href="#partnerships">Partnerships</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <a href="mailto:info@veteranserviceconnect.com">info@veteranserviceconnect.com</a>
-          <a href="mailto:partner@veteranserviceconnect.com">partner@veteranserviceconnect.com</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <p>&copy; 2026 Veteran Service Connect LLC. All rights reserved. Veteran-owned. New York.</p>
+      <div class="footer-bottom">
+        <p>© 2026 Veteran Service Connect LLC. All rights reserved.</p>
+        <div class="footer-built">Built by <span>VSC</span></div>
       </div>
     </div>
   </footer>

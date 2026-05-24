@@ -1,7 +1,11 @@
+/* ================================================================
+   VSC Website — Main JS
+   ================================================================ */
+
 /* ---- Nav scroll state ---- */
-const navHeader = document.getElementById('nav-header');
+const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
-  navHeader.classList.toggle('scrolled', window.scrollY > 20);
+  nav.classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
 
 /* ---- Mobile nav toggle ---- */
@@ -14,16 +18,59 @@ navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
-/* ---- Contact form — basic client-side handler ---- */
+/* ---- Scroll reveal (CSS class-based, not inline opacity) ---- */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ---- Number counter animation ---- */
+function animateCounter(el, target, duration = 1600) {
+  const start = performance.now();
+  const isNum = !isNaN(target);
+  if (!isNum) return;
+
+  const update = (now) => {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(eased * target) + '+';
+    if (progress < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      if (!isNaN(target)) animateCounter(el, target);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+/* ---- Contact form ---- */
 const form = document.getElementById('contact-form');
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
+    const original = btn.textContent;
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
     const data = Object.fromEntries(new FormData(form));
+    data.page = document.documentElement.dataset.page || 'unknown';
 
     try {
       const res = await fetch('/api/contact', {
@@ -32,41 +79,33 @@ if (form) {
         body: JSON.stringify(data),
       });
       if (res.ok) {
-        btn.textContent = 'Message sent!';
+        btn.textContent = 'Message sent! We\'ll be in touch.';
+        btn.style.background = 'linear-gradient(135deg, #10B981, #059669)';
         form.reset();
       } else {
-        throw new Error('failed');
+        throw new Error();
       }
     } catch {
-      btn.textContent = 'Failed — please email us directly.';
+      btn.textContent = 'Send failed — email us directly.';
       btn.disabled = false;
     }
   });
 }
 
-/* ---- Scroll-reveal (lightweight, no library) ---- */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
+/* ---- Smooth active nav on scroll (homepage) ---- */
+if (document.documentElement.dataset.page === 'home') {
+  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
 
-document.querySelectorAll('.service-card, .about-card, .partnership-card, .value-item').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  observer.observe(el);
-});
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navAnchors.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.4 });
 
-document.addEventListener('animationend', () => {}, { once: true });
-
-document.querySelectorAll('.service-card, .about-card, .partnership-card, .value-item').forEach(el => {
-  el.addEventListener('transitionend', () => {}, { once: true });
-});
-
-const style = document.createElement('style');
-style.textContent = '.visible { opacity: 1 !important; transform: none !important; }';
-document.head.appendChild(style);
+  sections.forEach(s => sectionObserver.observe(s));
+}

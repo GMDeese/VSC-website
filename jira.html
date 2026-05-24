@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" data-page="jira">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VSC Jira Consultation Services — implementation, optimization, training, and capacity planning. In partnership with Dione Technology, Atlassian Gold Partner." />
+  <title>Jira Consultation — Veteran Service Connect</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .jira-accent { color: #6366F1; }
+    .page-hero { background: linear-gradient(180deg, rgba(99,102,241,0.05) 0%, transparent 100%); }
+
+    /* Services grid */
+    .services-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .service-card-v2 {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 36px;
+      transition: border-color 0.2s, transform 0.25s var(--ease-spring);
+    }
+    .service-card-v2:hover {
+      border-color: rgba(99,102,241,0.3);
+      transform: translateY(-2px);
+    }
+    .service-card-v2 .icon-box { margin-bottom: 20px; }
+    .service-card-v2 h3 {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .service-card-v2 p {
+      font-size: 15px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    /* Capacity dashboard feature */
+    .capacity-feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .capacity-screen {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .capacity-screen-bar {
+      height: 40px;
+      background: var(--surface-3);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 8px;
+    }
+    .wdot { width: 8px; height: 8px; border-radius: 50%; }
+    .wdot:nth-child(1) { background: #FF5F57; }
+    .wdot:nth-child(2) { background: #FEBC2E; }
+    .wdot:nth-child(3) { background: #28C840; }
+    .capacity-screen-inner { padding: 24px; }
+    .cap-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .cap-title { font-family: var(--font-display); font-size: 15px; font-weight: 700; }
+    .cap-date { font-size: 12px; color: var(--text-3); }
+    .cap-bar-group { display: flex; flex-direction: column; gap: 14px; }
+    .cap-bar-row { display: flex; flex-direction: column; gap: 6px; }
+    .cap-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-2); font-weight: 500; }
+    .cap-bar-track { height: 6px; background: var(--surface-3); border-radius: 3px; overflow: hidden; }
+    .cap-bar-fill { height: 100%; border-radius: 3px; }
+    .fill-green { background: linear-gradient(90deg, #10B981, #34D399); width: 72%; }
+    .fill-yellow { background: linear-gradient(90deg, #F59E0B, #FCD34D); width: 88%; }
+    .fill-red { background: linear-gradient(90deg, #EF4444, #F87171); width: 95%; }
+    .fill-blue { background: linear-gradient(90deg, #6366F1, #818CF8); width: 45%; }
+    .cap-summary { margin-top: 20px; display: flex; gap: 12px; }
+    .cap-sum-card { flex: 1; background: var(--surface-3); border-radius: 8px; padding: 12px; text-align: center; }
+    .cap-sum-num { font-family: var(--font-display); font-size: 20px; font-weight: 800; }
+    .cap-sum-label { font-size: 10px; color: var(--text-3); margin-top: 2px; }
+
+    /* Pain points */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .pain-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 24px;
+    }
+    .pain-x {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #EF4444;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .pain-item h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .pain-item p { font-size: 14px; color: var(--text-2); }
+
+    /* Contact section */
+    .contact-split {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid-3 { grid-template-columns: 1fr; }
+      .capacity-feature { grid-template-columns: 1fr; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .contact-split { grid-template-columns: 1fr; gap: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="nav-logo-mark">V</div>
+        <span class="nav-logo-text">Veteran Service Connect</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="nav-links">
+        <a href="/jira" class="active">Jira</a>
+        <a href="/businessconsulting">Consulting</a>
+        <a href="/mobileappdesign">Mobile Apps</a>
+        <a href="/productivity">Productivity</a>
+        <a href="#contact" class="btn btn-primary btn-sm">Schedule Assessment</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="orb orb-1" style="opacity:0.6"></div>
+      <div class="hero-dots" style="opacity:0.5"></div>
+      <div class="container">
+        <p class="eyebrow reveal" style="color:#6366F1">Jira Consultation &nbsp;·&nbsp; With Dione Technology</p>
+        <h1 class="display-l reveal reveal-delay-1" style="max-width:800px;margin-top:16px;margin-bottom:24px;">
+          Jira, done right.<br />
+          <span class="grad-text-blue">From day one to at scale.</span>
+        </h1>
+        <p class="body-l reveal reveal-delay-2" style="color:var(--text-2);max-width:560px;margin-bottom:40px;">
+          VSC and Dione Technology — Atlassian Gold Partner — combine strategic product thinking with the deepest Jira technical expertise available. We design, implement, and optimize Jira environments that actually match how your team works.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-3">
+          <a href="#contact" class="btn btn-gradient btn-lg">Schedule a Jira Assessment</a>
+          <a href="#services" class="btn btn-ghost btn-lg">See What We Fix</a>
+        </div>
+        <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-4">
+          <span class="badge badge-indigo">Gold Atlassian Partner (Dione)</span>
+          <span class="badge badge-gold">SDVOSB Certified (VSC)</span>
+          <span class="badge badge-green">Jira Software</span>
+          <span class="badge badge-green">Jira Service Management</span>
+          <span class="badge badge-outline">Confluence</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="glow-line"></div>
+
+    <!-- PAIN POINTS -->
+    <section class="section section-dark" id="services">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <p class="eyebrow">Why Teams Come to Us</p>
+          <h2 class="headline">Common Jira problems we've seen — and fixed.</h2>
+        </div>
+        <div class="pain-grid reveal reveal-delay-1">
+          <div class="pain-item">
+            <div class="pain-x">✕</div>
+            <div>
+              <h4>Jira was set up years ago and nobody knows why it's structured the way it is</h4>
+              <p>Inherited workflows nobody touches, boards nobody understands, and fields that haven't been used since 2021.</p>
+            </div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-x">✕</div>
+            <div>
+              <h4>Different teams running completely different Jira configurations</h4>
+              <p>Engineering sprints don't talk to design boards. Product roadmaps live in spreadsheets. Nothing connects.</p>
+            </div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-x">✕</div>
+            <div>
+              <h4>Capacity planning done in spreadsheets while Jira sits empty</h4>
+              <p>Leadership wants visibility. Teams want autonomy. The gap is a Jira configuration problem, not a process problem.</p>
+            </div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-x">✕</div>
+            <div>
+              <h4>New team members take weeks to understand the workflow</h4>
+              <p>Onboarding to Jira shouldn't require tribal knowledge. If it does, the configuration is the problem.</p>
+            </div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-x">✕</div>
+            <div>
+              <h4>Licensing costs growing faster than team size</h4>
+              <p>Unused licenses, duplicate tools, and unoptimized tier placement are bleeding budget every month.</p>
+            </div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-x">✕</div>
+            <div>
+              <h4>Jira reports don't tell you what you actually need to know</h4>
+              <p>Velocity charts. Burndown charts. None of them answer "are we going to hit the deadline?"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <p class="eyebrow">Our Services</p>
+          <h2 class="headline">Everything your Jira environment needs.</h2>
+        </div>
+        <div class="services-grid-3 reveal reveal-delay-1">
+          <div class="service-card-v2">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Jira Implementation</h3>
+            <p>Greenfield setup designed around how your team actually works — not generic templates. Project types, issue hierarchies, workflows, and screens configured from the ground up.</p>
+          </div>
+          <div class="service-card-v2">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke="currentColor" stroke-width="1.5"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <h3>Workflow Optimization</h3>
+            <p>Audit your existing Jira setup, eliminate redundancy, redesign workflows for clarity, and retrain teams. We fix what's broken without burning what's working.</p>
+          </div>
+          <div class="service-card-v2">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Admin &amp; User Management</h3>
+            <p>User provisioning, permission schemes, group management, SSO integration, and role-based access — structured for growth without becoming a permission nightmare.</p>
+          </div>
+          <div class="service-card-v2">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Capacity Planning Dashboard</h3>
+            <p>Our proprietary Capacity Dashboard surfaces team-level workload, sprint health, and delivery risk in real time — built on top of your existing Jira data.</p>
+          </div>
+          <div class="service-card-v2">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Training &amp; Enablement</h3>
+            <p>Live training sessions, documentation, and onboarding flows for every role — from new ICs to senior program managers — so your team becomes self-sufficient.</p>
+          </div>
+          <div class="service-card-v2">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Licensing &amp; Cost Optimization</h3>
+            <p>Through our partnership with Dione Technology (Atlassian Gold Partner), we provide compliant licensing guidance and optimize your Atlassian spend.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPACITY DASHBOARD -->
+    <section class="section section-dark">
+      <div class="container">
+        <div class="capacity-feature">
+          <div class="reveal">
+            <p class="eyebrow" style="color:#6366F1;margin-bottom:16px;">Built Tool</p>
+            <h2 class="headline" style="margin-bottom:16px;">Capacity Dashboard</h2>
+            <p class="body" style="color:var(--text-2);margin-bottom:24px;">We don't just consult — we build. The VSC Capacity Dashboard is a real product, built on Jira's API, that gives engineering leaders instant visibility into team-level workload and sprint delivery risk.</p>
+            <ul class="checklist">
+              <li>Real-time capacity vs. allocation view per team</li>
+              <li>Sprint health scoring with risk flags</li>
+              <li>Cross-team dependency visibility</li>
+              <li>Delivery confidence forecast for leadership</li>
+              <li>Integrates with existing Jira projects — no migration needed</li>
+            </ul>
+            <div style="margin-top:32px;">
+              <a href="#contact" class="btn btn-primary btn-lg">Request a Demo</a>
+            </div>
+          </div>
+          <div class="capacity-screen reveal reveal-delay-2">
+            <div class="capacity-screen-bar">
+              <div class="wdot"></div><div class="wdot"></div><div class="wdot"></div>
+              <span style="font-size:12px;color:var(--text-3);margin-left:8px;font-family:var(--font-display);font-weight:600;">VSC Capacity Dashboard</span>
+            </div>
+            <div class="capacity-screen-inner">
+              <div class="cap-header">
+                <div class="cap-title">Sprint 24 — Capacity</div>
+                <div class="cap-date">Q2 2026 · Week 3 of 6</div>
+              </div>
+              <div class="cap-bar-group">
+                <div class="cap-bar-row">
+                  <div class="cap-bar-label"><span>Platform Team</span><span style="color:#10B981">72%</span></div>
+                  <div class="cap-bar-track"><div class="cap-bar-fill fill-green"></div></div>
+                </div>
+                <div class="cap-bar-row">
+                  <div class="cap-bar-label"><span>Growth Team</span><span style="color:#F59E0B">88% ⚠</span></div>
+                  <div class="cap-bar-track"><div class="cap-bar-fill fill-yellow"></div></div>
+                </div>
+                <div class="cap-bar-row">
+                  <div class="cap-bar-label"><span>Infra &amp; DevOps</span><span style="color:#EF4444">95% 🔴</span></div>
+                  <div class="cap-bar-track"><div class="cap-bar-fill fill-red"></div></div>
+                </div>
+                <div class="cap-bar-row">
+                  <div class="cap-bar-label"><span>Design</span><span style="color:#6366F1">45%</span></div>
+                  <div class="cap-bar-track"><div class="cap-bar-fill fill-blue"></div></div>
+                </div>
+              </div>
+              <div class="cap-summary">
+                <div class="cap-sum-card">
+                  <div class="cap-sum-num" style="color:#10B981">87%</div>
+                  <div class="cap-sum-label">Delivery Confidence</div>
+                </div>
+                <div class="cap-sum-card">
+                  <div class="cap-sum-num" style="color:#F59E0B">3</div>
+                  <div class="cap-sum-label">At-Risk Items</div>
+                </div>
+                <div class="cap-sum-card">
+                  <div class="cap-sum-num" style="color:#6366F1">12</div>
+                  <div class="cap-sum-label">Blocked Issues</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIONE PARTNERSHIP -->
+    <section class="section">
+      <div class="container">
+        <div class="card card-gradient-border" style="padding:64px;" class="reveal">
+          <div style="max-width:680px;">
+            <p class="eyebrow" style="color:#6366F1;margin-bottom:16px;">Strategic Partnership</p>
+            <h2 class="headline" style="margin-bottom:16px;">The most comprehensive Jira coverage available.</h2>
+            <p class="body-l" style="color:var(--text-2);margin-bottom:24px;">
+              Dione Technology brings Atlassian Gold Partner credentials and enterprise delivery experience at institutions like BNP Paribas, Barclays, and Société Générale. VSC brings the E-2-E product strategy and technical product management layer.
+            </p>
+            <p class="body" style="color:var(--text-2);margin-bottom:40px;">
+              Together: you get expert licensing, deep Jira configuration, strategic workflow design, and ongoing support — from one engagement, one point of contact, zero handoffs.
+            </p>
+            <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+              <div class="partnership-main-badge" style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 24px;display:inline-flex;align-items:center;gap:12px;">
+                <div style="width:8px;height:8px;border-radius:50%;background:var(--grad-brand)"></div>
+                <span style="font-family:var(--font-display);font-weight:700;font-size:16px;">Dione Technology</span>
+                <span class="badge badge-indigo">Gold Partner</span>
+              </div>
+              <span style="font-size:24px;color:var(--text-3)">+</span>
+              <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 24px;display:inline-flex;align-items:center;gap:12px;">
+                <div class="nav-logo-mark" style="width:28px;height:28px;font-size:12px;">V</div>
+                <span style="font-family:var(--font-display);font-weight:700;font-size:16px;">Veteran Service Connect</span>
+                <span class="badge badge-gold">SDVOSB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section-dark" id="contact">
+      <div class="container">
+        <div class="contact-split">
+          <div class="reveal">
+            <p class="eyebrow" style="color:#6366F1;margin-bottom:16px;">Get Started</p>
+            <h2 class="headline" style="margin-bottom:16px;">Schedule a Jira Assessment</h2>
+            <p class="body" style="color:var(--text-2);margin-bottom:32px;">
+              We'll review your current Jira setup, identify the highest-impact improvements, and give you a clear roadmap — before any engagement begins.
+            </p>
+            <ul class="checklist">
+              <li>Current-state audit of your Jira configuration</li>
+              <li>Workflow gap analysis</li>
+              <li>Capacity and visibility recommendations</li>
+              <li>Licensing optimization review</li>
+              <li>Prioritized implementation roadmap</li>
+            </ul>
+            <div style="margin-top:40px;">
+              <a href="mailto:info@veteranserviceconnect.com" class="btn btn-gradient btn-lg" style="display:inline-flex;align-items:center;gap:10px;">
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                info@veteranserviceconnect.com
+              </a>
+            </div>
+          </div>
+          <div class="card card-glass reveal reveal-delay-2" style="padding:40px;">
+            <form class="form" id="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your name" required />
+                </div>
+                <div class="form-group">
+                  <label for="org">Organization</label>
+                  <input type="text" id="org" name="org" placeholder="Company name" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@company.com" required />
+              </div>
+              <div class="form-group">
+                <label for="jira-state">Current Jira State</label>
+                <select id="jira-state" name="jira_state">
+                  <option value="">Select one</option>
+                  <option>Starting from scratch</option>
+                  <option>Existing setup that needs cleanup</option>
+                  <option>Enterprise migration</option>
+                  <option>Need training &amp; enablement</option>
+                  <option>Capacity planning / dashboard</option>
+                  <option>Licensing review</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Tell us about your situation</label>
+                <textarea id="message" name="message" rows="4" placeholder="How many teams, current pain points, timeline..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-gradient btn-full">Request Assessment</button>
+              <p class="form-note">We respond within one business day.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo"><div class="nav-logo-mark">V</div><span class="nav-logo-text">Veteran Service Connect</span></a>
+          <p>Jira Consultation in partnership with Dione Technology. SDVOSB certified. New York.</p>
+          <span class="badge badge-gold">SDVOSB Certified</span>
+        </div>
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <h4>Jira Services</h4>
+            <a href="#services">Implementation</a>
+            <a href="#services">Optimization</a>
+            <a href="#services">Capacity Dashboard</a>
+            <a href="#services">Training</a>
+          </div>
+          <div class="footer-col">
+            <h4>VSC</h4>
+            <a href="/">Home</a>
+            <a href="/businessconsulting">Consulting</a>
+            <a href="/mobileappdesign">Mobile Apps</a>
+            <a href="/productivity">Productivity</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:info@veteranserviceconnect.com">info@veteranserviceconnect.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Veteran Service Connect LLC. All rights reserved.</p>
+        <div class="footer-built">Built by <span>VSC</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

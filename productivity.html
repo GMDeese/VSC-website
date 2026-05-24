@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" data-page="productivity">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VSC Productivity — The GTM Engine. A founder-built growth automation and productivity system for scaling businesses." />
+  <title>Productivity — Veteran Service Connect</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .page-hero { background: linear-gradient(180deg, rgba(16,185,129,0.05) 0%, transparent 100%); }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 36px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .feature-card:hover { border-color: rgba(16,185,129,0.3); transform: translateY(-2px); }
+    .feature-card .icon-box { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.2); color: #10B981; margin-bottom: 20px; }
+    .feature-card h3 { font-family: var(--font-display); font-size: 19px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .feature-card p { font-size: 15px; color: var(--text-2); line-height: 1.7; }
+
+    /* GTM Engine dashboard mock */
+    .gtm-dashboard {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .gtm-bar {
+      height: 44px;
+      background: var(--surface-3);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 8px;
+    }
+    .gtm-bar-title { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--text-2); margin-left: 8px; }
+    .wdot { width: 10px; height: 10px; border-radius: 50%; }
+    .gtm-inner { padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .gtm-metric {
+      background: var(--surface-3);
+      border-radius: var(--r-md);
+      padding: 20px;
+    }
+    .gtm-metric-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px; }
+    .gtm-metric-num { font-family: var(--font-display); font-size: 32px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+    .gtm-metric-change { font-size: 12px; font-weight: 600; margin-top: 6px; }
+    .gtm-metric-change.up { color: #10B981; }
+    .gtm-metric-change.down { color: #EF4444; }
+    .gtm-pipeline { margin-top: 16px; padding: 0 28px 28px; }
+    .gtm-pipeline-title { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 12px; }
+    .gtm-stage-row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+    .gtm-stage-name { font-size: 12px; font-weight: 500; color: var(--text-2); width: 120px; flex-shrink: 0; }
+    .gtm-stage-bar-track { flex: 1; height: 6px; background: var(--surface-3); border-radius: 3px; overflow: hidden; }
+    .gtm-stage-fill { height: 100%; border-radius: 3px; }
+    .gtm-stage-count { font-size: 11px; color: var(--text-3); width: 24px; text-align: right; flex-shrink: 0; }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .gtm-inner { grid-template-columns: 1fr 1fr; }
+      .philosophy-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="nav-logo-mark">V</div>
+        <span class="nav-logo-text">Veteran Service Connect</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="nav-links">
+        <a href="/jira">Jira</a>
+        <a href="/businessconsulting">Consulting</a>
+        <a href="/mobileappdesign">Mobile Apps</a>
+        <a href="/productivity" class="active">Productivity</a>
+        <a href="#contact" class="btn btn-primary btn-sm">Get Access</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="orb orb-1" style="background:rgba(16,185,129,0.12);opacity:0.7;"></div>
+      <div class="hero-dots" style="opacity:0.4"></div>
+      <div class="container">
+        <p class="eyebrow reveal" style="color:#10B981">Productivity &nbsp;·&nbsp; GTM Engine</p>
+        <h1 class="display-l reveal reveal-delay-1" style="max-width:800px;margin-top:16px;margin-bottom:24px;">
+          The engine that turns<br />
+          <span style="background:linear-gradient(135deg,#10B981,#6366F1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">strategy into pipeline.</span>
+        </h1>
+        <p class="body-l reveal reveal-delay-2" style="color:var(--text-2);max-width:580px;margin-bottom:40px;">
+          The GTM Engine is VSC's proprietary growth automation and go-to-market system — built by a founder, for founders and growth operators. It connects research, content, outreach, and analytics into a single automated pipeline.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-3">
+          <a href="#contact" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#10B981,#6366F1)">Request Access</a>
+          <a href="#features" class="btn btn-ghost btn-lg">See How It Works</a>
+        </div>
+        <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-4">
+          <span class="badge" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);color:#6EE7B7;">Built at VSC</span>
+          <span class="badge badge-indigo">AI-Powered Synthesis</span>
+          <span class="badge badge-outline">Fully Automated Pipeline</span>
+          <span class="badge badge-gold">SDVOSB Certified</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="glow-line"></div>
+
+    <!-- PHILOSOPHY -->
+    <section class="section section-dark">
+      <div class="container">
+        <div class="philosophy-grid">
+          <div class="reveal">
+            <p class="eyebrow" style="color:#10B981;margin-bottom:16px;">The Problem We Solved</p>
+            <h2 class="headline" style="margin-bottom:20px;">GTM execution breaks down between strategy and shipping.</h2>
+            <p class="body" style="color:var(--text-2);margin-bottom:16px;">Most go-to-market plans are great slides. They fail because execution requires a dozen disconnected tools, manual handoffs between research and content, and someone to hold the whole thing together at 11pm.</p>
+            <p class="body" style="color:var(--text-2);margin-bottom:32px;">The GTM Engine automates the handoffs. Market research feeds content generation. Content generation feeds outreach sequences. Outreach feeds analytics. Analytics feeds the next research cycle. One engine, continuous motion.</p>
+            <ul class="checklist">
+              <li>Automated market research synthesis with AI</li>
+              <li>Content generation pipeline (email, social, long-form)</li>
+              <li>Outreach sequencing with personalization at scale</li>
+              <li>Real-time pipeline analytics and attribution</li>
+              <li>Feedback loops that improve each cycle automatically</li>
+            </ul>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="gtm-dashboard">
+              <div class="gtm-bar">
+                <div class="wdot" style="background:#FF5F57"></div>
+                <div class="wdot" style="background:#FEBC2E"></div>
+                <div class="wdot" style="background:#28C840"></div>
+                <span class="gtm-bar-title">GTM Engine — Dashboard</span>
+              </div>
+              <div class="gtm-inner">
+                <div class="gtm-metric">
+                  <div class="gtm-metric-label">Leads Generated</div>
+                  <div class="gtm-metric-num" style="background:linear-gradient(135deg,#10B981,#34D399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">847</div>
+                  <div class="gtm-metric-change up">↑ 34% this week</div>
+                </div>
+                <div class="gtm-metric">
+                  <div class="gtm-metric-label">Emails Sent</div>
+                  <div class="gtm-metric-num" style="color:var(--text)">2,341</div>
+                  <div class="gtm-metric-change up">↑ 12% open rate</div>
+                </div>
+                <div class="gtm-metric">
+                  <div class="gtm-metric-label">Content Pieces</div>
+                  <div class="gtm-metric-num" style="background:linear-gradient(135deg,#6366F1,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">128</div>
+                  <div class="gtm-metric-change up">↑ Auto-generated</div>
+                </div>
+                <div class="gtm-metric">
+                  <div class="gtm-metric-label">Pipeline Value</div>
+                  <div class="gtm-metric-num" style="color:var(--text)">$148K</div>
+                  <div class="gtm-metric-change up">↑ 6 new opps</div>
+                </div>
+              </div>
+              <div class="gtm-pipeline">
+                <div class="gtm-pipeline-title">Pipeline Stages</div>
+                <div class="gtm-stage-row">
+                  <div class="gtm-stage-name">Research</div>
+                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:95%;background:linear-gradient(90deg,#10B981,#34D399)"></div></div>
+                  <div class="gtm-stage-count">47</div>
+                </div>
+                <div class="gtm-stage-row">
+                  <div class="gtm-stage-name">Content Gen</div>
+                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:78%;background:linear-gradient(90deg,#6366F1,#818CF8)"></div></div>
+                  <div class="gtm-stage-count">38</div>
+                </div>
+                <div class="gtm-stage-row">
+                  <div class="gtm-stage-name">Outreach</div>
+                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:60%;background:linear-gradient(90deg,#8B5CF6,#A78BFA)"></div></div>
+                  <div class="gtm-stage-count">29</div>
+                </div>
+                <div class="gtm-stage-row">
+                  <div class="gtm-stage-name">Qualified</div>
+                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:25%;background:linear-gradient(90deg,#F59E0B,#FCD34D)"></div></div>
+                  <div class="gtm-stage-count">12</div>
+                </div>
+                <div class="gtm-stage-row">
+                  <div class="gtm-stage-name">Closed</div>
+                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:12%;background:linear-gradient(90deg,#EC4899,#F9A8D4)"></div></div>
+                  <div class="gtm-stage-count">6</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <p class="eyebrow" style="color:#10B981">Capabilities</p>
+          <h2 class="headline">Everything in the pipeline, automated.</h2>
+        </div>
+        <div class="feature-grid reveal reveal-delay-1">
+          <div class="feature-card">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Market Research Synthesis</h3>
+            <p>The engine continuously crawls market signals, competitor moves, and customer intelligence — synthesizing them into actionable research briefings using AI. No analyst required.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Content Generation Pipeline</h3>
+            <p>Research inputs flow directly into content generation — email sequences, LinkedIn posts, long-form articles, and outreach scripts — personalized by segment, tone, and stage.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Outreach Sequencing</h3>
+            <p>Multi-touch outreach sequences triggered by engagement signals — not a calendar. The engine knows when to follow up, escalate, or pause based on behavior, not guesswork.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon-box">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Attribution &amp; Analytics</h3>
+            <p>Full-funnel attribution from first touch to closed deal. Which content converted. Which channels performed. Where the pipeline is leaking. All in one dashboard.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-dark" id="contact">
+      <div class="container">
+        <div style="background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(99,102,241,0.06));border:1px solid rgba(16,185,129,0.2);border-radius:var(--r-xl);padding:80px;text-align:center;" class="reveal">
+          <p class="eyebrow" style="color:#10B981;margin-bottom:16px;">Request Access</p>
+          <h2 class="headline" style="margin-bottom:16px;">Put your GTM on autopilot.</h2>
+          <p class="body-l" style="color:var(--text-2);max-width:480px;margin:0 auto 40px;">
+            The GTM Engine is available to select VSC clients. Tell us about your current go-to-market motion and where the friction is.
+          </p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <a href="mailto:info@veteranserviceconnect.com?subject=GTM Engine Access" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#10B981,#6366F1)">Request Access</a>
+            <a href="/businessconsulting" class="btn btn-ghost btn-lg">Learn the E-2-E Framework</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo"><div class="nav-logo-mark">V</div><span class="nav-logo-text">Veteran Service Connect</span></a>
+          <p>Productivity tools built by a founder who runs them on his own business. SDVOSB certified.</p>
+          <span class="badge badge-gold">SDVOSB Certified</span>
+        </div>
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <h4>GTM Engine</h4>
+            <a href="#features">Research Synthesis</a>
+            <a href="#features">Content Pipeline</a>
+            <a href="#features">Outreach Automation</a>
+            <a href="#features">Attribution</a>
+          </div>
+          <div class="footer-col">
+            <h4>VSC</h4>
+            <a href="/">Home</a>
+            <a href="/jira">Jira Consulting</a>
+            <a href="/businessconsulting">Consulting</a>
+            <a href="/mobileappdesign">Mobile Apps</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:info@veteranserviceconnect.com">info@veteranserviceconnect.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Veteran Service Connect LLC. All rights reserved.</p>
+        <div class="footer-built">Built by <span>VSC</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
