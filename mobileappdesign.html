@@ -48,99 +48,17 @@
       margin-top: 24px;
     }
 
-    /* Phone mockup (CSS-only) */
+    /* Phone mockup — real PNG frames */
     .phone-mockup {
       display: flex;
       justify-content: center;
-      position: relative;
-    }
-    .phone-shell {
-      width: 260px;
-      border-radius: 40px;
-      background: var(--surface-3);
-      border: 1.5px solid var(--border);
-      padding: 16px 10px;
-      position: relative;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
-    }
-    .phone-notch {
-      width: 80px;
-      height: 24px;
-      background: var(--bg);
-      border-radius: 12px;
-      margin: 0 auto 12px;
-      display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 6px;
     }
-    .phone-notch-dot {
-      width: 8px; height: 8px; border-radius: 50%; background: var(--surface-2);
+    .phone-mockup img {
+      width: 280px;
+      height: auto;
+      display: block;
     }
-    .phone-notch-pill {
-      width: 40px; height: 8px; border-radius: 4px; background: var(--surface-2);
-    }
-    .phone-screen {
-      border-radius: 28px;
-      overflow: hidden;
-      min-height: 440px;
-    }
-
-    /* Stillwater app screen */
-    .sw-screen {
-      background: #0A0A0F;
-      padding: 20px 16px;
-      min-height: 440px;
-      display: flex;
-      flex-direction: column;
-    }
-    .sw-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .sw-logo { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: #00E5CC; }
-    .sw-icon { width: 28px; height: 28px; border-radius: 8px; background: rgba(0,229,204,0.15); border: 1px solid rgba(0,229,204,0.3); display: flex; align-items: center; justify-content: center; }
-    .sw-section-label { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #555570; margin-bottom: 10px; }
-    .sw-mixer-layers { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-    .sw-layer { display: flex; align-items: center; gap: 8px; background: #141420; border-radius: 10px; padding: 8px 10px; }
-    .sw-layer-icon { width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0; }
-    .sw-layer-name { font-size: 10px; font-weight: 600; color: #8888AA; flex: 1; }
-    .sw-layer-vol { width: 60px; height: 3px; background: #2A2A3A; border-radius: 2px; position: relative; }
-    .sw-layer-vol-fill { height: 100%; border-radius: 2px; }
-    .sw-waveform { height: 30px; display: flex; align-items: center; gap: 2px; margin-bottom: 16px; overflow: hidden; }
-    .sw-bar { background: #00E5CC; border-radius: 2px; opacity: 0.6; }
-    .sw-controls { display: flex; justify-content: center; gap: 16px; align-items: center; }
-    .sw-play { width: 40px; height: 40px; border-radius: 50%; background: #00E5CC; display: flex; align-items: center; justify-content: center; }
-    .sw-ctrl { width: 28px; height: 28px; border-radius: 50%; background: #141420; border: 1px solid #2A2A3A; display: flex; align-items: center; justify-content: center; }
-
-    /* Naera app screen */
-    .naera-screen {
-      background: #F8F4EF;
-      padding: 20px 16px;
-      min-height: 440px;
-      display: flex;
-      flex-direction: column;
-    }
-    .naera-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-    .naera-logo { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #1A1A2E; }
-    .naera-prop-card {
-      background: white;
-      border-radius: 14px;
-      overflow: hidden;
-      margin-bottom: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .naera-prop-img {
-      height: 70px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-    }
-    .naera-prop-info { padding: 10px 12px; }
-    .naera-prop-name { font-size: 11px; font-weight: 700; color: #1A1A2E; margin-bottom: 2px; }
-    .naera-prop-addr { font-size: 9px; color: #888; margin-bottom: 6px; }
-    .naera-prop-stats { display: flex; gap: 8px; }
-    .naera-stat { font-size: 9px; font-weight: 600; padding: 2px 6px; border-radius: 4px; background: #F0F0F0; color: #555; }
-    .naera-stat.green { background: #D1FAE5; color: #065F46; }
 
     /* Process */
     .process-cards {
@@ -168,18 +86,19 @@
     .process-card h3 { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 8px; }
     .process-card p { font-size: 13px; color: var(--text-2); line-height: 1.6; }
 
-    /* Naera device stack */
+    /* Naera device stack — phone in front, browser behind */
     .naera-device-stack {
       position: relative;
-      height: 420px;
       display: flex;
       align-items: flex-end;
+      justify-content: flex-end;
+      min-height: 560px;
     }
     .naera-browser {
       position: absolute;
       right: 0;
       top: 0;
-      width: 88%;
+      width: 76%;
       background: var(--surface-2);
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -216,21 +135,24 @@
       text-decoration: none;
     }
     .naera-browser-screen { line-height: 0; }
-    .naera-phone-overlay {
+    .naera-phone-img {
       position: absolute;
       left: 0;
       bottom: 0;
       z-index: 2;
-      filter: drop-shadow(0 32px 48px rgba(0,0,0,0.7));
+      width: 240px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
     }
-    .naera-phone-overlay .phone-shell { width: 200px; }
 
     @media (max-width: 900px) {
       .app-showcase { grid-template-columns: 1fr; gap: 48px; }
       .app-showcase.reverse { direction: ltr; }
       .phone-mockup { order: -1; }
-      .naera-device-stack { height: 320px; }
-      .naera-phone-overlay .phone-shell { width: 150px; }
+      .naera-device-stack { min-height: 380px; }
+      .naera-phone-img { width: 170px; }
+      .phone-mockup img { width: 220px; }
       .process-cards { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 500px) {
@@ -317,15 +239,7 @@
             </div>
           </div>
           <div class="phone-mockup reveal reveal-delay-2">
-            <div class="phone-shell">
-              <div class="phone-notch">
-                <div class="phone-notch-dot"></div>
-                <div class="phone-notch-pill"></div>
-              </div>
-              <div class="phone-screen" style="padding:0;overflow:hidden;border-radius:inherit;">
-                <img src="/assets/stillwater-mixer.png" alt="Stillwater mixer screen" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;" />
-              </div>
-            </div>
+            <img src="/assets/stillwater-iphone.png" alt="Stillwater mixer on iPhone 15 Pro" />
           </div>
         </div>
 
@@ -348,7 +262,7 @@
             </div>
           </div>
           <div class="naera-device-stack reveal reveal-delay-2">
-            <!-- Browser frame (behind) -->
+            <!-- Browser window (behind, top-right) -->
             <div class="naera-browser">
               <div class="naera-browser-bar">
                 <div class="naera-browser-dots">
@@ -360,22 +274,12 @@
               </div>
               <div class="naera-browser-screen">
                 <a href="https://naera.app" target="_blank" rel="noopener" style="display:block;line-height:0;">
-                  <img src="/assets/naera-desktop.png" alt="Naera desktop" style="width:100%;display:block;object-fit:cover;object-position:top;height:280px;" />
+                  <img src="/assets/naera-desktop.png" alt="Naera on desktop" style="width:100%;display:block;object-fit:cover;object-position:top;height:320px;" />
                 </a>
               </div>
             </div>
-            <!-- Phone frame (in front) -->
-            <div class="naera-phone-overlay">
-              <div class="phone-shell">
-                <div class="phone-notch">
-                  <div class="phone-notch-dot"></div>
-                  <div class="phone-notch-pill"></div>
-                </div>
-                <div class="phone-screen" style="padding:0;overflow:hidden;border-radius:inherit;">
-                  <img src="/assets/naera-mobile.png" alt="Naera mobile" style="width:100%;display:block;object-fit:cover;object-position:top;height:440px;" />
-                </div>
-              </div>
-            </div>
+            <!-- Real iPhone mockup (in front, bottom-left) -->
+            <img src="/assets/naera-iphone.png" alt="Naera on iPhone 15 Pro" class="naera-phone-img" />
           </div>
         </div>
       </div>
