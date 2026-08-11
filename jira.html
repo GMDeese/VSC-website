@@ -8,11 +8,11 @@
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styles.css" />
   <style>
-    .jira-accent { color: #6366F1; }
-    .page-hero { background: linear-gradient(180deg, rgba(99,102,241,0.05) 0%, transparent 100%); }
+    .jira-accent { color: var(--color-accent); }
+    .page-hero { background: linear-gradient(180deg, rgba(135,169,135,0.05) 0%, transparent 100%); }
 
     /* Services grid */
     .services-grid-3 {
@@ -28,7 +28,7 @@
       transition: border-color 0.2s, transform 0.25s var(--ease-spring);
     }
     .service-card-v2:hover {
-      border-color: rgba(99,102,241,0.3);
+      border-color: rgba(135,169,135,0.3);
       transform: translateY(-2px);
     }
     .service-card-v2 .icon-box { margin-bottom: 20px; }
@@ -68,9 +68,9 @@
       gap: 8px;
     }
     .wdot { width: 8px; height: 8px; border-radius: 50%; }
-    .wdot:nth-child(1) { background: #FF5F57; }
-    .wdot:nth-child(2) { background: #FEBC2E; }
-    .wdot:nth-child(3) { background: #28C840; }
+    .wdot:nth-child(1) { background: var(--color-ink-4); }
+    .wdot:nth-child(2) { background: var(--color-ink-4); }
+    .wdot:nth-child(3) { background: var(--color-ink-4); }
     .capacity-screen-inner { padding: 24px; }
     .cap-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
     .cap-title { font-family: var(--font-display); font-size: 15px; font-weight: 700; }
@@ -80,13 +80,13 @@
     .cap-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-2); font-weight: 500; }
     .cap-bar-track { height: 6px; background: var(--surface-3); border-radius: 3px; overflow: hidden; }
     .cap-bar-fill { height: 100%; border-radius: 3px; }
-    .fill-green { background: linear-gradient(90deg, #10B981, #34D399); width: 72%; }
-    .fill-yellow { background: linear-gradient(90deg, #F59E0B, #FCD34D); width: 88%; }
-    .fill-red { background: linear-gradient(90deg, #EF4444, #F87171); width: 95%; }
-    .fill-blue { background: linear-gradient(90deg, #6366F1, #818CF8); width: 45%; }
+    .fill-green { background: var(--color-ok); width: 72%; }
+    .fill-yellow { background: var(--color-khaki); width: 88%; }
+    .fill-red { background: var(--color-danger); width: 95%; }
+    .fill-blue { background: var(--color-accent); width: 45%; }
     .cap-summary { margin-top: 20px; display: flex; gap: 12px; }
     .cap-sum-card { flex: 1; background: var(--surface-3); border-radius: 8px; padding: 12px; text-align: center; }
-    .cap-sum-num { font-family: var(--font-display); font-size: 20px; font-weight: 800; }
+    .cap-sum-num { font-family: var(--font-display); font-size: 20px; font-weight: 600; }
     .cap-sum-label { font-size: 10px; color: var(--text-3); margin-top: 2px; }
 
     /* Pain points */
@@ -108,12 +108,12 @@
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      background: rgba(239,68,68,0.1);
-      border: 1px solid rgba(239,68,68,0.2);
+      background: rgba(195,64,67,0.1);
+      border: 1px solid rgba(195,64,67,0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #EF4444;
+      color: var(--color-danger);
       font-size: 12px;
       font-weight: 700;
       flex-shrink: 0;
@@ -147,7 +147,7 @@
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a href="/" class="nav-logo">
-        <img src="/assets/vsc-mark.png" alt="VSC" style="height:40px;width:auto;" /><span class="nav-logo-text">Veteran Service Connect</span>
+        <span class="coin" aria-hidden="true"></span><span class="nav-logo-text">VSC Enterprise Solutions</span>
         
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
@@ -170,7 +170,7 @@
       <div class="orb orb-1" style="opacity:0.6"></div>
       <div class="hero-dots" style="opacity:0.5"></div>
       <div class="container">
-        <p class="eyebrow reveal" style="color:#6366F1">Jira Consultation &nbsp;·&nbsp; SDVOSB Certified</p>
+        <p class="eyebrow reveal" style="color:var(--color-accent)">Jira Consultation &nbsp;·&nbsp; SDVOSB Certified</p>
         <h1 class="display-l reveal reveal-delay-1" style="max-width:800px;margin-top:16px;margin-bottom:24px;">
           Jira, done right.<br />
           <span class="grad-text-blue">From day one to at scale.</span>
@@ -306,13 +306,13 @@
     <section class="section">
       <div class="container">
         <div class="section-header centered reveal">
-          <p class="eyebrow" style="color:#6366F1">How We Work Together</p>
+          <p class="eyebrow" style="color:var(--color-accent)">How We Work Together</p>
           <h2 class="headline">The partnership model.</h2>
           <p class="body-l" style="color:var(--text-2);max-width:580px;">VSC and our implementation partners divide the work cleanly — so you get deep strategic thinking and deep technical execution without one diluting the other.</p>
         </div>
         <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:start;" class="reveal reveal-delay-1">
           <!-- VSC Column -->
-          <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.2);border-radius:var(--r-lg);padding:40px;">
+          <div style="background:rgba(135,169,135,0.06);border:1px solid rgba(135,169,135,0.2);border-radius:var(--r-lg);padding:40px;">
             <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;">
               <div class="nav-logo-mark" style="width:32px;height:32px;font-size:13px;">V</div>
               <span style="font-family:var(--font-display);font-weight:700;font-size:17px;">VSC</span>
@@ -320,20 +320,20 @@
             </div>
             <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:16px;">Strategy &amp; Workflow</h3>
             <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
-              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:#6366F1;flex-shrink:0">→</span> Jira workflow design and optimization</li>
-              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:#6366F1;flex-shrink:0">→</span> Process analysis and gap identification</li>
-              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:#6366F1;flex-shrink:0">→</span> Custom dashboard and reporting strategy</li>
-              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:#6366F1;flex-shrink:0">→</span> API skin design and integration planning</li>
-              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:#6366F1;flex-shrink:0">→</span> Team training and change management</li>
-              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:#6366F1;flex-shrink:0">→</span> Ongoing optimization — single point of contact</li>
+              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--color-accent);flex-shrink:0">→</span> Jira workflow design and optimization</li>
+              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--color-accent);flex-shrink:0">→</span> Process analysis and gap identification</li>
+              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--color-accent);flex-shrink:0">→</span> Custom dashboard and reporting strategy</li>
+              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--color-accent);flex-shrink:0">→</span> API skin design and integration planning</li>
+              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--color-accent);flex-shrink:0">→</span> Team training and change management</li>
+              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--color-accent);flex-shrink:0">→</span> Ongoing optimization — single point of contact</li>
             </ul>
           </div>
           <!-- Plus -->
           <div style="font-size:32px;color:var(--text-3);padding-top:48px;text-align:center;">+</div>
           <!-- Partner Column -->
-          <div style="background:rgba(139,92,246,0.04);border:1px solid rgba(139,92,246,0.15);border-radius:var(--r-lg);padding:40px;">
+          <div style="background:rgba(135,169,135,0.04);border:1px solid rgba(135,169,135,0.15);border-radius:var(--r-lg);padding:40px;">
             <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;">
-              <div style="width:32px;height:32px;border-radius:8px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);display:flex;align-items:center;justify-content:center;">
+              <div style="width:32px;height:32px;border-radius:8px;background:rgba(135,169,135,0.15);border:1px solid rgba(135,169,135,0.3);display:flex;align-items:center;justify-content:center;">
                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="currentColor" stroke-width="1.5"/></svg>
               </div>
               <span style="font-family:var(--font-display);font-weight:700;font-size:17px;">Implementation Partner</span>
@@ -341,12 +341,12 @@
             </div>
             <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:16px;">Technical Execution</h3>
             <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
-              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:#8B5CF6;flex-shrink:0">→</span> Complex migrations (Server → Cloud, DC → Cloud)</li>
-              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:#8B5CF6;flex-shrink:0">→</span> Atlassian licensing and tier optimization</li>
-              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:#8B5CF6;flex-shrink:0">→</span> API integrations and custom app development</li>
-              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:#8B5CF6;flex-shrink:0">→</span> Enterprise SSO and security configuration</li>
-              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:#8B5CF6;flex-shrink:0">→</span> Certified implementation (Gold Partner credentials)</li>
-              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:#8B5CF6;flex-shrink:0">→</span> Data center and enterprise-scale deployments</li>
+              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--color-accent);flex-shrink:0">→</span> Complex migrations (Server → Cloud, DC → Cloud)</li>
+              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--color-accent);flex-shrink:0">→</span> Atlassian licensing and tier optimization</li>
+              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--color-accent);flex-shrink:0">→</span> API integrations and custom app development</li>
+              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--color-accent);flex-shrink:0">→</span> Enterprise SSO and security configuration</li>
+              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--color-accent);flex-shrink:0">→</span> Certified implementation (Gold Partner credentials)</li>
+              <li style="font-size:15px;color:var(--text-2);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--color-accent);flex-shrink:0">→</span> Data center and enterprise-scale deployments</li>
             </ul>
           </div>
         </div>
@@ -401,9 +401,9 @@
                   </div>
                 </div>
                 <div class="cap-summary">
-                  <div class="cap-sum-card"><div class="cap-sum-num" style="color:#10B981">On Track</div><div class="cap-sum-label">2 Teams</div></div>
-                  <div class="cap-sum-card"><div class="cap-sum-num" style="color:#F59E0B">At Risk</div><div class="cap-sum-label">1 Team</div></div>
-                  <div class="cap-sum-card"><div class="cap-sum-num" style="color:#EF4444">Critical</div><div class="cap-sum-label">1 Team</div></div>
+                  <div class="cap-sum-card"><div class="cap-sum-num" style="color:var(--color-ok)">On Track</div><div class="cap-sum-label">2 Teams</div></div>
+                  <div class="cap-sum-card"><div class="cap-sum-num" style="color:var(--color-khaki)">At Risk</div><div class="cap-sum-label">1 Team</div></div>
+                  <div class="cap-sum-card"><div class="cap-sum-num" style="color:var(--color-danger)">Critical</div><div class="cap-sum-label">1 Team</div></div>
                 </div>
               </div>
             </div>
@@ -477,7 +477,7 @@
                   }).then(function(r) {
                     if (r.ok) {
                       btn.textContent = 'You\'re on the list ✓';
-                      msg.style.color = '#10B981';
+                      msg.style.color = 'var(--color-ok)';
                       msg.textContent = 'We\'ll be in touch when Capacity Dashboard opens.';
                       form.reset();
                     } else {
@@ -486,7 +486,7 @@
                   }).catch(function() {
                     btn.disabled = false;
                     btn.textContent = 'Join the Waitlist';
-                    msg.style.color = '#EF4444';
+                    msg.style.color = 'var(--color-warn)';
                     msg.textContent = 'Something went wrong — email us at info@veteranserviceconnect.com';
                   });
                 });
@@ -502,7 +502,7 @@
       <div class="container">
         <div class="contact-split">
           <div class="reveal">
-            <p class="eyebrow" style="color:#6366F1;margin-bottom:16px;">Get Started</p>
+            <p class="eyebrow" style="color:var(--color-accent);margin-bottom:16px;">Get Started</p>
             <h2 class="headline" style="margin-bottom:16px;">Schedule a Jira Assessment</h2>
             <p class="body" style="color:var(--text-2);margin-bottom:32px;">
               We'll review your current Jira setup, identify the highest-impact improvements, and give you a clear roadmap — before any engagement begins.
@@ -578,14 +578,14 @@
                   }).then(function(r) {
                     if (r.ok) {
                       btn.textContent = 'Request Sent ✓';
-                      msg.style.color = '#10B981';
+                      msg.style.color = 'var(--color-ok)';
                       msg.textContent = 'We\'ll be in touch within one business day.';
                       form.reset();
                     } else { throw new Error(); }
                   }).catch(function() {
                     btn.disabled = false;
                     btn.textContent = 'Request Assessment';
-                    msg.style.color = '#EF4444';
+                    msg.style.color = 'var(--color-warn)';
                     msg.textContent = 'Something went wrong — email us at info@veteranserviceconnect.com';
                   });
                 });
@@ -602,7 +602,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <a href="/" class="nav-logo"><img src="/assets/vsc-mark.png" alt="VSC" style="height:40px;width:auto;" /><span class="nav-logo-text">Veteran Service Connect</span></a>
+          <a href="/" class="nav-logo"><span class="coin" aria-hidden="true"></span><span class="nav-logo-text">VSC Enterprise Solutions</span></a>
           <p>Jira Consultation delivered with Atlassian Gold Partner implementation partners. SDVOSB certified. New York.</p>
           <span class="badge badge-gold">SDVOSB Certified</span>
         </div>

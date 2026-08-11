@@ -1,0 +1,25 @@
+/* VSC-INK v0.1.0 — pairing laws:
+   1. Sage #87A987 is TEXT on ink grounds ONLY (6.90:1). NEVER sage text on forest #425047 (3.26:1, fails AA).
+   2. Forest panels take fujiWhite #DCD7BA or brass #E6C384 text only.
+   3. Primary CTA = brass ground #E6C384 + ink text #16161D (10.72:1). Brass is an ACTION color; it never decorates.
+   4. Label-quiet #8F8A73 is non-key labels only (5.19:1).
+   5. Single theme: ink only. No light mode.
+   6. Insignia scale: no service-derived element larger than a wordmark. Coin ≤11px, ribbon rail ≤6px tall.
+   7. Mark hierarchy: brass-ringed coin on family surfaces only. */
+:root {
+  --color-ink-0:#16161D; --color-ink-1:#1F1F28; --color-ink-2:#2A2A37; --color-ink-3:#363646; --color-ink-4:#54546D;
+  --color-paper:#DCD7BA; --color-paper-soft:#C8C093; --color-paper-quiet:#8F8A73;
+  --color-forest:#425047; --color-forest-deep:#2B3328; --color-sage:#87A987; --color-sage-bright:#A7C080; --color-olive:#76946A;
+  --color-brass:#E6C384; --color-brass-aged:#D8A657; --color-khaki:#C0A36E;
+  --color-wave-aqua:#7AA89F; --color-crystal:#7E9CD8; --color-terracotta:#B6927B;
+  --color-ok:#98BB6C; --color-warn:#FF9E3B; --color-danger:#C34043; --color-wave-shadow:#223249;
+  --space-1:4px; --space-2:8px; --space-3:16px; --space-4:24px; --space-5:32px; --space-6:48px;
+  --radius-sm:6px; --radius-md:10px; --radius-lg:12px;
+  /* semantic */
+  --color-surface:var(--color-ink-0); --color-surface-raised:var(--color-ink-1);
+  --color-panel:var(--color-forest); --color-panel-deep:var(--color-forest-deep);
+  --color-text-primary:var(--color-paper); --color-text-secondary:var(--color-paper-soft); --color-label-quiet:var(--color-paper-quiet);
+  --color-accent:var(--color-sage); --color-accent-bright:var(--color-sage-bright);
+  --color-action-bg:var(--color-brass); --color-action-bg-active:var(--color-brass-aged); --color-action-text:var(--color-ink-0);
+  --color-border:var(--color-ink-3); --color-border-strong:var(--color-ink-4); --color-focus:var(--color-brass);
+}
