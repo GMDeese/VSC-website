@@ -35,6 +35,10 @@ function animateCounter(el, target, duration = 1600) {
   const start = performance.now();
   const isNum = !isNaN(target);
   if (!isNum) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    el.textContent = target + '+';
+    return;
+  }
 
   const update = (now) => {
     const elapsed = now - start;
@@ -80,7 +84,7 @@ if (form) {
       });
       if (res.ok) {
         btn.textContent = 'Message sent! We\'ll be in touch.';
-        btn.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+        btn.style.background = 'var(--color-ok)';
         form.reset();
       } else {
         throw new Error();

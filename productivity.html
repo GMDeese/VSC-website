@@ -8,10 +8,10 @@
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styles.css" />
   <style>
-    .page-hero { background: linear-gradient(180deg, rgba(16,185,129,0.05) 0%, transparent 100%); }
+    .page-hero { background: linear-gradient(180deg, rgba(152,187,108,0.05) 0%, transparent 100%); }
 
     .feature-grid {
       display: grid;
@@ -25,8 +25,8 @@
       padding: 36px;
       transition: border-color 0.2s, transform 0.2s;
     }
-    .feature-card:hover { border-color: rgba(16,185,129,0.3); transform: translateY(-2px); }
-    .feature-card .icon-box { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.2); color: #10B981; margin-bottom: 20px; }
+    .feature-card:hover { border-color: rgba(152,187,108,0.3); transform: translateY(-2px); }
+    .feature-card .icon-box { background: rgba(152,187,108,0.1); border-color: rgba(152,187,108,0.2); color: var(--color-ok); margin-bottom: 20px; }
     .feature-card h3 { font-family: var(--font-display); font-size: 19px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; }
     .feature-card p { font-size: 15px; color: var(--text-2); line-height: 1.7; }
 
@@ -55,10 +55,10 @@
       padding: 20px;
     }
     .gtm-metric-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px; }
-    .gtm-metric-num { font-family: var(--font-display); font-size: 32px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+    .gtm-metric-num { font-family: var(--font-display); font-size: 32px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
     .gtm-metric-change { font-size: 12px; font-weight: 600; margin-top: 6px; }
-    .gtm-metric-change.up { color: #10B981; }
-    .gtm-metric-change.down { color: #EF4444; }
+    .gtm-metric-change.up { color: var(--color-ok); }
+    .gtm-metric-change.down { color: var(--color-warn); }
     .gtm-pipeline { margin-top: 16px; padding: 0 28px 28px; }
     .gtm-pipeline-title { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 12px; }
     .gtm-stage-row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
@@ -86,7 +86,7 @@
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a href="/" class="nav-logo">
-        <img src="/assets/vsc-mark.png" alt="VSC" style="height:40px;width:auto;" /><span class="nav-logo-text">Veteran Service Connect</span>
+        <span class="coin" aria-hidden="true"></span><span class="nav-logo-text">VSC Enterprise Solutions</span>
         
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
@@ -105,23 +105,23 @@
   <main>
 
     <section class="page-hero">
-      <div class="orb orb-1" style="background:rgba(16,185,129,0.12);opacity:0.7;"></div>
+      <div class="orb orb-1" style="background:rgba(152,187,108,0.12);opacity:0.7;"></div>
       <div class="hero-dots" style="opacity:0.4"></div>
       <div class="container">
-        <p class="eyebrow reveal" style="color:#10B981">Productivity &nbsp;·&nbsp; GTM Engine</p>
+        <p class="eyebrow reveal" style="color:var(--color-ok)">Productivity &nbsp;·&nbsp; GTM Engine</p>
         <h1 class="display-l reveal reveal-delay-1" style="max-width:800px;margin-top:16px;margin-bottom:24px;">
           The engine that turns<br />
-          <span style="background:linear-gradient(135deg,#10B981,#6366F1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">strategy into pipeline.</span>
+          <span style="color:var(--color-accent);">strategy into pipeline.</span>
         </h1>
         <p class="body-l reveal reveal-delay-2" style="color:var(--text-2);max-width:580px;margin-bottom:40px;">
           The GTM Engine is VSC's proprietary growth automation and go-to-market system — built by a founder, for founders and growth operators. It connects research, content, outreach, and analytics into a single automated pipeline.
         </p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-3">
-          <a href="#contact" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#10B981,#6366F1)">Request Access</a>
+          <a href="#contact" class="btn btn-gradient btn-lg" style="background:var(--color-action-bg)">Request Access</a>
           <a href="#features" class="btn btn-ghost btn-lg">See How It Works</a>
         </div>
         <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-4">
-          <span class="badge" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);color:#6EE7B7;">Built at VSC</span>
+          <span class="badge" style="background:rgba(152,187,108,0.1);border:1px solid rgba(152,187,108,0.25);color:var(--color-ok);">Built at VSC</span>
           <span class="badge badge-indigo">AI-Powered Synthesis</span>
           <span class="badge badge-outline">Fully Automated Pipeline</span>
           <span class="badge badge-gold">SDVOSB Certified</span>
@@ -136,7 +136,7 @@
       <div class="container">
         <div class="philosophy-grid">
           <div class="reveal">
-            <p class="eyebrow" style="color:#10B981;margin-bottom:16px;">The Problem We Solved</p>
+            <p class="eyebrow" style="color:var(--color-ok);margin-bottom:16px;">The Problem We Solved</p>
             <h2 class="headline" style="margin-bottom:20px;">GTM execution breaks down between strategy and shipping.</h2>
             <p class="body" style="color:var(--text-2);margin-bottom:16px;">Most go-to-market plans are great slides. They fail because execution requires a dozen disconnected tools, manual handoffs between research and content, and someone to hold the whole thing together at 11pm.</p>
             <p class="body" style="color:var(--text-2);margin-bottom:32px;">The GTM Engine automates the handoffs. Market research feeds content generation. Content generation feeds outreach sequences. Outreach feeds analytics. Analytics feeds the next research cycle. One engine, continuous motion.</p>
@@ -151,15 +151,15 @@
           <div class="reveal reveal-delay-2">
             <div class="gtm-dashboard">
               <div class="gtm-bar">
-                <div class="wdot" style="background:#FF5F57"></div>
-                <div class="wdot" style="background:#FEBC2E"></div>
-                <div class="wdot" style="background:#28C840"></div>
+                <div class="wdot" style="background:var(--color-ink-4)"></div>
+                <div class="wdot" style="background:var(--color-ink-4)"></div>
+                <div class="wdot" style="background:var(--color-ink-4)"></div>
                 <span class="gtm-bar-title">GTM Engine — Dashboard</span>
               </div>
               <div class="gtm-inner">
                 <div class="gtm-metric">
                   <div class="gtm-metric-label">Leads Generated</div>
-                  <div class="gtm-metric-num" style="background:linear-gradient(135deg,#10B981,#34D399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">847</div>
+                  <div class="gtm-metric-num" style="color:var(--color-ok);">847</div>
                   <div class="gtm-metric-change up">↑ 34% this week</div>
                 </div>
                 <div class="gtm-metric">
@@ -169,7 +169,7 @@
                 </div>
                 <div class="gtm-metric">
                   <div class="gtm-metric-label">Content Pieces</div>
-                  <div class="gtm-metric-num" style="background:linear-gradient(135deg,#6366F1,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">128</div>
+                  <div class="gtm-metric-num" style="color:var(--color-accent);">128</div>
                   <div class="gtm-metric-change up">↑ Auto-generated</div>
                 </div>
                 <div class="gtm-metric">
@@ -182,27 +182,27 @@
                 <div class="gtm-pipeline-title">Pipeline Stages</div>
                 <div class="gtm-stage-row">
                   <div class="gtm-stage-name">Research</div>
-                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:95%;background:linear-gradient(90deg,#10B981,#34D399)"></div></div>
+                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:95%;background:var(--color-ok)"></div></div>
                   <div class="gtm-stage-count">47</div>
                 </div>
                 <div class="gtm-stage-row">
                   <div class="gtm-stage-name">Content Gen</div>
-                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:78%;background:linear-gradient(90deg,#6366F1,#818CF8)"></div></div>
+                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:78%;background:var(--color-accent)"></div></div>
                   <div class="gtm-stage-count">38</div>
                 </div>
                 <div class="gtm-stage-row">
                   <div class="gtm-stage-name">Outreach</div>
-                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:60%;background:linear-gradient(90deg,#8B5CF6,#A78BFA)"></div></div>
+                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:60%;background:var(--color-accent)"></div></div>
                   <div class="gtm-stage-count">29</div>
                 </div>
                 <div class="gtm-stage-row">
                   <div class="gtm-stage-name">Qualified</div>
-                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:25%;background:linear-gradient(90deg,#F59E0B,#FCD34D)"></div></div>
+                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:25%;background:var(--color-khaki)"></div></div>
                   <div class="gtm-stage-count">12</div>
                 </div>
                 <div class="gtm-stage-row">
                   <div class="gtm-stage-name">Closed</div>
-                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:12%;background:linear-gradient(90deg,#EC4899,#F9A8D4)"></div></div>
+                  <div class="gtm-stage-bar-track"><div class="gtm-stage-fill" style="width:12%;background:var(--color-accent)"></div></div>
                   <div class="gtm-stage-count">6</div>
                 </div>
               </div>
@@ -216,7 +216,7 @@
     <section class="section" id="features">
       <div class="container">
         <div class="section-header centered reveal">
-          <p class="eyebrow" style="color:#10B981">Capabilities</p>
+          <p class="eyebrow" style="color:var(--color-ok)">Capabilities</p>
           <h2 class="headline">Everything in the pipeline, automated.</h2>
         </div>
         <div class="feature-grid reveal reveal-delay-1">
@@ -255,14 +255,14 @@
     <!-- CTA -->
     <section class="section section-dark" id="contact">
       <div class="container">
-        <div style="background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(99,102,241,0.06));border:1px solid rgba(16,185,129,0.2);border-radius:var(--r-xl);padding:80px;text-align:center;" class="reveal">
-          <p class="eyebrow" style="color:#10B981;margin-bottom:16px;">Request Access</p>
+        <div style="background:rgba(152,187,108,0.07);border:1px solid rgba(152,187,108,0.2);border-radius:var(--r-xl);padding:80px;text-align:center;" class="reveal">
+          <p class="eyebrow" style="color:var(--color-ok);margin-bottom:16px;">Request Access</p>
           <h2 class="headline" style="margin-bottom:16px;">Put your GTM on autopilot.</h2>
           <p class="body-l" style="color:var(--text-2);max-width:480px;margin:0 auto 40px;">
             The GTM Engine is available to select VSC clients. Tell us about your current go-to-market motion and where the friction is.
           </p>
           <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-            <a href="mailto:info@veteranserviceconnect.com?subject=GTM Engine Access" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#10B981,#6366F1)">Request Access</a>
+            <a href="mailto:info@veteranserviceconnect.com?subject=GTM Engine Access" class="btn btn-gradient btn-lg" style="background:var(--color-action-bg)">Request Access</a>
             <a href="/businessconsulting" class="btn btn-ghost btn-lg">Learn the E-2-E Framework</a>
           </div>
         </div>
@@ -275,7 +275,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <a href="/" class="nav-logo"><img src="/assets/vsc-mark.png" alt="VSC" style="height:40px;width:auto;" /><span class="nav-logo-text">Veteran Service Connect</span></a>
+          <a href="/" class="nav-logo"><span class="coin" aria-hidden="true"></span><span class="nav-logo-text">VSC Enterprise Solutions</span></a>
           <p>Productivity tools built by a founder who runs them on his own business. SDVOSB certified.</p>
           <span class="badge badge-gold">SDVOSB Certified</span>
         </div>

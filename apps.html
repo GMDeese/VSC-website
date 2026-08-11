@@ -8,10 +8,10 @@
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styles.css" />
   <style>
-    .page-hero { background: linear-gradient(180deg, rgba(236,72,153,0.05) 0%, transparent 100%); }
+    .page-hero { background: linear-gradient(180deg, rgba(135,169,135,0.05) 0%, transparent 100%); }
 
     /* App showcase */
     .app-showcase {
@@ -27,7 +27,7 @@
     .app-info h2 {
       font-family: var(--font-display);
       font-size: clamp(30px, 3.5vw, 44px);
-      font-weight: 800;
+      font-weight: 600;
       letter-spacing: -0.03em;
       margin-bottom: 16px;
       line-height: 1.05;
@@ -74,12 +74,12 @@
       text-align: center;
       transition: border-color 0.2s, transform 0.2s;
     }
-    .process-card:hover { border-color: rgba(236,72,153,0.3); transform: translateY(-2px); }
+    .process-card:hover { border-color: rgba(135,169,135,0.3); transform: translateY(-2px); }
     .process-card-num {
       font-family: var(--font-display);
       font-size: 40px;
-      font-weight: 800;
-      color: rgba(236,72,153,0.15);
+      font-weight: 600;
+      color: rgba(135,169,135,0.15);
       margin-bottom: 12px;
       line-height: 1;
     }
@@ -130,7 +130,7 @@
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a href="/" class="nav-logo">
-        <img src="/assets/vsc-mark.png" alt="VSC" style="height:40px;width:auto;" /><span class="nav-logo-text">Veteran Service Connect</span>
+        <span class="coin" aria-hidden="true"></span><span class="nav-logo-text">VSC Enterprise Solutions</span>
         
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
@@ -152,20 +152,20 @@
       <div class="orb orb-3" style="opacity:0.6;bottom:auto;top:20%;left:auto;right:10%"></div>
       <div class="hero-dots" style="opacity:0.4"></div>
       <div class="container">
-        <p class="eyebrow reveal" style="color:#EC4899">App Design &nbsp;·&nbsp; iOS &amp; Beyond</p>
+        <p class="eyebrow reveal" style="color:var(--color-accent)">App Design &nbsp;·&nbsp; iOS &amp; Beyond</p>
         <h1 class="display-l reveal reveal-delay-1" style="max-width:800px;margin-top:16px;margin-bottom:24px;">
           Apps built by someone<br />
-          <span style="background:linear-gradient(135deg,#EC4899,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">who ships apps.</span>
+          <span style="color:var(--color-accent);">who ships apps.</span>
         </h1>
         <p class="body-l reveal reveal-delay-2" style="color:var(--text-2);max-width:580px;margin-bottom:40px;">
           VSC builds real iOS products — not wireframes, not prototypes, not pitch decks. Stillwater is in active TestFlight beta with real users ahead of App Store launch. We bring that founder-level understanding to every client engagement.
         </p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-3">
-          <a href="#contact" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#EC4899,#8B5CF6)">Start a Project</a>
+          <a href="#contact" class="btn btn-gradient btn-lg" style="background:var(--color-action-bg)">Start a Project</a>
           <a href="#portfolio" class="btn btn-ghost btn-lg">See Our Portfolio</a>
         </div>
         <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-delay-4">
-          <span class="badge" style="background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.25);color:#F9A8D4;">1 Live iOS App · Web App in Development</span>
+          <span class="badge" style="background:rgba(135,169,135,0.1);border:1px solid rgba(135,169,135,0.25);color:var(--color-sage-bright);">1 Live iOS App · Web App in Development</span>
           <span class="badge badge-indigo">React Native · Expo</span>
           <span class="badge badge-outline">iOS · Web</span>
           <span class="badge badge-gold">SDVOSB Certified</span>
@@ -179,14 +179,14 @@
     <section class="section" id="portfolio">
       <div class="container">
         <div class="section-header reveal">
-          <p class="eyebrow" style="color:#EC4899">Portfolio</p>
+          <p class="eyebrow" style="color:var(--color-accent)">Portfolio</p>
           <h2 class="headline">Built. Shipped. Alive.</h2>
         </div>
 
         <!-- STILLWATER -->
         <div class="app-showcase" style="margin-bottom:120px;">
           <div class="app-info reveal">
-            <span class="badge" style="background:rgba(0,229,204,0.1);border:1px solid rgba(0,229,204,0.25);color:#5EEAD4;margin-bottom:20px;display:inline-flex;">iOS Beta · TestFlight</span>
+            <span class="badge" style="background:rgba(122,168,159,0.1);border:1px solid rgba(122,168,159,0.25);color:var(--color-wave-aqua);margin-bottom:20px;display:inline-flex;">iOS Beta · TestFlight</span>
             <h2>Stillwater</h2>
             <p class="tagline">"Your Neural Sound Bath"</p>
             <p>A premium ASMR and neural audio app that lets users build personalized, layered soundscapes — up to 10 simultaneous tracks with independent volume control. Built on React Native with Expo, backed by Supabase, monetized through RevenueCat.</p>
@@ -200,7 +200,7 @@
               <span class="badge badge-outline">EAS Build</span>
             </div>
             <div style="margin-top:32px;">
-              <a href="https://getstillwater.app" target="_blank" rel="noopener" class="btn btn-ghost" style="border-color:rgba(0,229,204,0.3);color:#5EEAD4;">Visit getstillwater.app →</a>
+              <a href="https://getstillwater.app" target="_blank" rel="noopener" class="btn btn-ghost" style="border-color:rgba(122,168,159,0.3);color:var(--color-wave-aqua);">Visit getstillwater.app →</a>
             </div>
           </div>
           <div class="phone-mockup reveal reveal-delay-2">
@@ -211,7 +211,7 @@
         <!-- NAERA -->
         <div class="app-showcase reverse">
           <div class="app-info reveal">
-            <span class="badge" style="background:rgba(79,70,229,0.1);border:1px solid rgba(79,70,229,0.25);color:#818CF8;margin-bottom:20px;display:inline-flex;">Private Home Network · Live Web App</span>
+            <span class="badge" style="background:rgba(182,146,123,0.1);border:1px solid rgba(182,146,123,0.25);color:var(--color-terracotta);margin-bottom:20px;display:inline-flex;">Private Home Network · Live Web App</span>
             <h2>Naera</h2>
             <p class="tagline">"Your circle. Their schedules. Their homes."</p>
             <p>Naera is a private home-sharing network for your inner circle. Share your travel schedule, and Naera automatically surfaces homes in your network that are available when you need them — no strangers, no listings, no awkward asks.</p>
@@ -225,7 +225,7 @@
               <span class="badge badge-outline">Web</span>
             </div>
             <div style="margin-top:32px;">
-              <a href="https://naera.app" target="_blank" rel="noopener" class="btn btn-ghost" style="border-color:rgba(102,126,234,0.3);color:#A5B4FC;">Visit naera.app →</a>
+              <a href="https://naera.app" target="_blank" rel="noopener" class="btn btn-ghost" style="border-color:rgba(182,146,123,0.3);color:var(--color-terracotta);">Visit naera.app →</a>
             </div>
           </div>
           <div class="naera-device-stack reveal reveal-delay-2">
@@ -244,7 +244,7 @@
     <section class="section section-dark">
       <div class="container">
         <div class="section-header centered reveal">
-          <p class="eyebrow" style="color:#EC4899">How We Work</p>
+          <p class="eyebrow" style="color:var(--color-accent)">How We Work</p>
           <h2 class="headline">From idea to App Store in four stages.</h2>
         </div>
         <div class="process-cards reveal reveal-delay-1">
@@ -275,11 +275,11 @@
     <!-- CTA -->
     <section class="section" id="contact">
       <div class="container">
-        <div style="background:linear-gradient(135deg,rgba(236,72,153,0.08),rgba(139,92,246,0.06));border:1px solid rgba(236,72,153,0.2);border-radius:var(--r-xl);padding:80px;text-align:center;" class="reveal">
-          <p class="eyebrow" style="color:#EC4899;margin-bottom:16px;">Ready to Build?</p>
+        <div style="background:rgba(135,169,135,0.07);border:1px solid rgba(135,169,135,0.2);border-radius:var(--r-xl);padding:80px;text-align:center;" class="reveal">
+          <p class="eyebrow" style="color:var(--color-accent);margin-bottom:16px;">Ready to Build?</p>
           <h2 class="headline" style="margin-bottom:16px;">Let's talk about your app.</h2>
           <p class="body-l" style="color:var(--text-2);max-width:480px;margin:0 auto 40px;">We work with founders and companies who have an idea worth building. Bring us the problem — we'll tell you honestly if we're the right fit.</p>
-          <a href="mailto:info@veteranserviceconnect.com?subject=Mobile App Project" class="btn btn-gradient btn-lg" style="background:linear-gradient(135deg,#EC4899,#8B5CF6)">Start a Conversation</a>
+          <a href="mailto:info@veteranserviceconnect.com?subject=Mobile App Project" class="btn btn-gradient btn-lg" style="background:var(--color-action-bg)">Start a Conversation</a>
         </div>
       </div>
     </section>
@@ -290,7 +290,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <a href="/" class="nav-logo"><img src="/assets/vsc-mark.png" alt="VSC" style="height:40px;width:auto;" /><span class="nav-logo-text">Veteran Service Connect</span></a>
+          <a href="/" class="nav-logo"><span class="coin" aria-hidden="true"></span><span class="nav-logo-text">VSC Enterprise Solutions</span></a>
           <p>App Design. Built by a founder who ships. SDVOSB certified.</p>
           <span class="badge badge-gold">SDVOSB Certified</span>
         </div>
