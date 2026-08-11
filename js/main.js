@@ -96,6 +96,51 @@ if (form) {
   });
 }
 
+/* ---- Hero wave overlay (static — drawn once, redrawn on resize only) ---- */
+const heroWaves = document.getElementById('hero-waves');
+if (heroWaves) {
+  const styles = getComputedStyle(document.documentElement);
+  const layerColors = [
+    styles.getPropertyValue('--color-wave-shadow').trim() || '#223249',
+    styles.getPropertyValue('--color-forest-deep').trim() || '#2B3328',
+    styles.getPropertyValue('--color-forest').trim() || '#425047',
+  ];
+
+  const drawWaves = () => {
+    const dpr = window.devicePixelRatio || 1;
+    const w = heroWaves.clientWidth;
+    const h = heroWaves.clientHeight;
+    heroWaves.width = Math.round(w * dpr);
+    heroWaves.height = Math.round(h * dpr);
+    const ctx = heroWaves.getContext('2d');
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, w, h);
+
+    for (let i = 0; i < 3; i++) {
+      const baseline = h * (0.66 + i * 0.12);
+      const phase = i * 2.1 + 1.4;
+      const amp = h * 0.045 * (1 - i * 0.2);
+      const freq = (Math.PI * 2 * (1.5 + i * 0.5)) / w;
+
+      ctx.globalAlpha = 0.45 - i * 0.08;
+      ctx.fillStyle = layerColors[i];
+      ctx.beginPath();
+      ctx.moveTo(0, baseline + amp * Math.sin(phase));
+      for (let x = 1; x <= w; x++) {
+        ctx.lineTo(x, baseline + amp * Math.sin(x * freq + phase));
+      }
+      ctx.lineTo(w, h);
+      ctx.lineTo(0, h);
+      ctx.closePath();
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  };
+
+  drawWaves();
+  window.addEventListener('resize', drawWaves, { passive: true });
+}
+
 /* ---- Smooth active nav on scroll (homepage) ---- */
 if (document.documentElement.dataset.page === 'home') {
   const sections = document.querySelectorAll('section[id]');
